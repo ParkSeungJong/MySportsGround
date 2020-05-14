@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1240.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sist.booking.controller.Booking03_UserInformationController">
+   <children>
+      <SplitPane dividerPositions="0.43211920529801323" layoutX="220.0" layoutY="325.0" orientation="VERTICAL" prefHeight="505.0" prefWidth="630.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="580.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="325.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="628.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="대관을 진행하여 주세요" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Label>
+                  <GridPane layoutX="50.0" layoutY="95.0" prefHeight="89.0" prefWidth="528.0" AnchorPane.bottomAnchor="61.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="67.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="67.0" minHeight="0.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="15.0" prefWidth="186.0" style="-fx-background-color: gray;" text="날  짜" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label alignment="CENTER" prefHeight="15.0" prefWidth="188.0" style="-fx-background-color: gray;" text="경기장명" textAlignment="CENTER" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label alignment="CENTER" prefHeight="15.0" prefWidth="188.0" style="-fx-background-color: gray;" text="주소" textAlignment="CENTER" GridPane.columnIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="txtDate" strokeType="OUTSIDE" strokeWidth="0.0" text="날짜" textAlignment="CENTER" wrappingWidth="173.58984375" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="17.0" />
+                           </font></Text>
+                        <Text fx:id="txtFsName" strokeType="OUTSIDE" strokeWidth="0.0" text="쌍용" textAlignment="CENTER" wrappingWidth="172.884765625" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="17.0" />
+                           </font></Text>
+                        <Text fx:id="txtAddress" strokeType="OUTSIDE" strokeWidth="0.0" text="홍대" textAlignment="CENTER" wrappingWidth="172.884765625" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="88.0" layoutY="81.0" text="신청팀 :" AnchorPane.leftAnchor="88.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label layoutX="88.0" layoutY="135.0" text="신청자 :" AnchorPane.leftAnchor="88.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label layoutX="88.0" layoutY="187.0" text="연락처 :" AnchorPane.leftAnchor="88.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <TextField fx:id="tfTeam" layoutX="198.0" layoutY="78.0" prefHeight="32.0" prefWidth="212.0" text="예) 홍길동팀">
+                     <font>
+                        <Font size="11.0" />
+                     </font></TextField>
+                  <Button fx:id="bookBtn" layoutX="460.0" layoutY="247.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="138.0" text="예약신청" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="30.0" />
+                  <Label layoutX="127.0" layoutY="33.0" text="ID :">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="txtId" layoutX="198.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="user1" wrappingWidth="90.00000655651093">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="tfUserNumber" layoutX="198.0" layoutY="184.0" prefHeight="32.0" prefWidth="212.0" text="010-1234-4567" />
+                  <TextField fx:id="tfUserName" layoutX="198.0" layoutY="132.0" prefHeight="32.0" prefWidth="212.0" text="홍길동" />
+                  <Label layoutX="88.0" layoutY="243.0" text="※ 미입력시 기본 회원정보로 예약됩니다." textFill="RED" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <Label layoutX="30.0" layoutY="360.0" prefHeight="45.0" prefWidth="449.0" text="▶개인정보 제 3자 제공 방침 및 시설 이용 약관" AnchorPane.leftAnchor="30.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextArea layoutX="30.0" layoutY="412.0" prefHeight="166.0" prefWidth="520.0" text="대관 서비스 개인정보 제3자 제공 방침&#10;&#10;1. 수집 항목 : 실명, 휴대전화번호, 이메일, 주소, 생년월일, ID 등&#10;2. 수집 목적 : 시설 대관 관리&#10;3. 보관 기간 : 대관 일시로부터 1년&#10;4. 제공 받는 자 : 해당 체육시설&#10;&#10;대관 서비스 개인정보 제3자 제공 방침에 동의하지 않을 수 있습니다. &#10;본 방침에 동의하지 않을 시 해당 시설과 대관 서비스를 이용 하실 수 없습니다.&#10;" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="690.0" />
+      <TextArea layoutX="30.0" layoutY="623.0" prefHeight="176.0" prefWidth="520.0" text="시설 이용 약관&#10;&#10;1. 건물 내부 및 근처에서 절대 금연입니다.&#10;2. 체육시설 내 음식물, 주류, 음료 반입 금지합니다.&#10;3. 시설 이용 중 시설물 및 기물 파손은 즉각 담당자에게 보고해야하며, &#10;    대관 신청자가 원상복구 혹은 변상해야 합니다.&#10;4. 시설물 및 기물의 용도와 위치의 변경, 광고물(현수막 등) 설치 등은 반드시 &#10;    관리자에게 사전 승인을 받아야합니다.&#10;5. 해당 시설을 이용한 상업 행위, 유료 강습, 이윤추구는 엄격하게 금지되어 있습니다.&#10;6. 시설 이용 후 폐기물, 오물 등 뒷정리 및 원상복구 해주셔야 합니다.&#10;7. 대관 확정 후 시설의 급한 사정으로 인해 대관이 취소 될 수 있으며, &#10;    이점 협조 부탁드립니다.&#10;8. 과도한 소음 및 소란 행위는 금지되어 있습니다.&#10;9. 체육 경기 외 목적(행사 진행 등)으로 이용 시 담당자에게 사전 승인을 받아야합니다.&#10;10. 미풍양속을 해치는 행위, 풍기문란 행위, 노상방뇨 등은 금지되어 있습니다. &#10;" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="690.0" />
+      <CheckBox fx:id="check1" layoutX="27.0" layoutY="584.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" text="개인정보 동의" />
+      <CheckBox fx:id="check2" layoutX="27.0" layoutY="798.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" text="이용약관 동의" />
+      <Label layoutX="30.0" layoutY="313.0" prefHeight="38.0" prefWidth="275.0" text="경기장 예약하기">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="loginbtn" layoutX="831.0" layoutY="29.0" mnemonicParsing="false" onAction="#MoveToLgPg" prefHeight="29.0" prefWidth="80.0" text="로그인" />
+      <Button fx:id="MyPgBtn" layoutX="918.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#MoveToMyPg" prefHeight="29.0" prefWidth="108.0" text="마이페이지" />
+      <MenuButton fx:id="comboBox" layoutX="1033.0" layoutY="29.0" mnemonicParsing="false" onAction="#Hyperlink01" prefHeight="29.0" prefWidth="153.0" text="관련사이트">
+         <items>
+            <MenuItem fx:id="hyper01" mnemonicParsing="false" onAction="#Hyperlink01" text="쌍용스포츠 ">
+               <graphic>
+                  <Hyperlink text="쌍용스포츠 " />
+               </graphic>
+            </MenuItem>
+            <MenuItem fx:id="hyper02" mnemonicParsing="false" onAction="#Hyperlink02" text="쌍용SNS">
+               <graphic>
+                  <Hyperlink text="쌍용SNS" />
+               </graphic>
+            </MenuItem>
+         </items>
+      </MenuButton>
+      <ImageView fx:id="Logo" fitHeight="300.0" fitWidth="800.0" layoutX="240.0" layoutY="90.0" onMouseClicked="#MoveToMainPg" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/img/msglogo.PNG" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

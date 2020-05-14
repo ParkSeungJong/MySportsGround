@@ -1,0 +1,36 @@
+package com.sist.booking.controller;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.text.Text;
+
+public class Booking04_CompleteController implements Initializable {
+	
+	@FXML Text txtAddress, txtFsName, txtDate, txtUserId, txtUserNumber, txtUserName, txtTeamName;
+	
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		String bookingFsName = Booking02_listController.bookingFsName;
+		String date = Booking02_listController.date;
+		String address = Booking02_listController.address;
+		
+		String team = Booking03_UserInformationController.team;
+		String userNum = Booking03_UserInformationController.userNum;
+		String userName = Booking03_UserInformationController.userName;
+		String userId = Booking03_UserInformationController.userId;
+		
+		txtAddress.setText(address);
+		txtFsName.setText(bookingFsName);
+		txtDate.setText(date);
+		
+		txtTeamName.setText(team);
+		txtUserNumber.setText(userNum);
+		txtUserName.setText(userName);
+		txtUserId.setText(userId);
+	}
+
+}

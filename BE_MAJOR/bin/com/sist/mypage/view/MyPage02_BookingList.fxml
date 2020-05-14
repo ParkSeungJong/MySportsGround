@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sist.mypage.controller.MyPage02_BookingListController">
+   <children>
+      <Pane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1240.0" style="-fx-background-color: white;">
+         <children>
+            <SplitPane dividerPositions="0.5" layoutX="-10.0" layoutY="270.0" maxHeight="-Infinity" minHeight="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="1250.0">
+               <items>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="1199.0">
+                     <children>
+                        <Label layoutX="8.0" layoutY="7.0" prefHeight="50.0" prefWidth="296.0" style="-fx-font-size: 28;" text="마이 페이지" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="528.0" prefWidth="1162.0">
+                     <children>
+                        <Button fx:id="bookinglistbtn" layoutX="24.0" layoutY="102.0" mnemonicParsing="false" onAction="#bookinglistAction" prefHeight="50.0" prefWidth="112.0" text="나의 예약 내역" />
+                        <Button fx:id="userinfobtn" layoutX="24.0" layoutY="168.0" mnemonicParsing="false" onAction="#userinfoAction" prefHeight="50.0" prefWidth="112.0" text="회원정보" />
+                        <Label layoutX="190.0" layoutY="14.0" prefHeight="47.0" prefWidth="219.0" style="-fx-font-size: 22;" text="나의 예약 내역" />
+                        <TableView fx:id="tableView" layoutX="211.0" layoutY="104.0" prefHeight="315.0" prefWidth="847.0">
+                          <columns>
+                            <TableColumn prefWidth="273.0" text="경기장명" />
+                            <TableColumn prefWidth="296.0" text="예약날짜" />
+                              <TableColumn prefWidth="276.0" text="예약자 성명" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+            <ImageView fx:id="Logo" fitHeight="200.0" fitWidth="800.0" layoutX="220.0" layoutY="50.0" onMouseClicked="#MoveToMainPg" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="/img/msglogo.PNG" />
+               </image>
+            </ImageView>
+            <Button fx:id="logOut" layoutX="914.0" layoutY="29.0" mnemonicParsing="false" text="로그아웃" />
+            <Button fx:id="main" layoutX="1000.0" layoutY="29.0" mnemonicParsing="false" text="메인페이지" />
+            <MenuButton fx:id="comboBox" layoutX="1101.0" layoutY="29.0" mnemonicParsing="false" text="관련사이트">
+              <items>
+                <MenuItem fx:id="hyper01" mnemonicParsing="false" text="Action 1" />
+                <MenuItem fx:id="hyper02" mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

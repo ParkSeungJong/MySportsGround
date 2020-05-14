@@ -1,0 +1,163 @@
+package com.sist.mypage.controller;
+
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import com.sist.hr.cmn.HROraConnectionMaker;
+import com.sist.hr.member.dao.MemberDao;
+import com.sist.hr.member.domain.MemberVO;
+import com.sist.mypage.dao.UserDao;
+import com.sist.mypage.dao.UserVO;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+
+public class MyPage01_UserInfoController implements Initializable {
+
+   @FXML
+   TextField id;
+   @FXML PasswordField pw;
+   @FXML TextField userAddress;
+   @FXML TextField userName;
+   @FXML TextField userPhone;
+   @FXML TextField userEmail;
+   @FXML Button saveBtn;// 등록버튼
+   @FXML Button cancelBtn;//취소버튼
+   
+   @FXML Button bookinglistbtn;
+   @FXML Button userinfobtn;
+   @FXML Button bookinghistorybtn;
+   @FXML ImageView Logo;
+   
+
+   @Override
+   public void initialize(URL location, ResourceBundle resources) {
+	   
+	   
+	 //로고 이미지 클릭시 메인페이지로 이동	
+	 Logo.setOnMouseClicked(event -> MoveToMainPg(event));
+	   
+      // 등록버튼 이벤트 감지
+      saveBtn.setOnAction(event -> saveHandlerBtn(event));
+      
+      cancelBtn.setOnAction(event -> cancelBtn(event));
+
+      
+      
+         
+         
+      }
+      
+ //상단 로고 클릭시 메인페이지로 이동
+ 	public void MoveToMainPg(MouseEvent event) {
+ 		try {
+
+ 			Parent root = FXMLLoader.load(getClass().getResource("/com/sist/mainpage/view/MainPage.fxml"));
+ 			Scene scene = new Scene(root);
+ 			Stage primaryStage = (Stage) Logo.getScene().getWindow();
+ 			primaryStage.setScene(scene);
+ 			primaryStage.show();
+
+ 		}catch(Exception e){
+ 			e.printStackTrace();
+ 		}
+ 	}
+   
+
+
+   public void saveHandlerBtn(ActionEvent event) {
+      // System.out.println("saveHandlerBtn");
+
+      String ID = id.getText();
+      System.out.println("ID:" + ID);
+
+      String passwd = pw.getText();
+      System.out.println("passwd:" + passwd);
+
+      String Address = userAddress.getText();
+      System.out.println("Address:" + Address);
+
+      String Name = userName.getText();
+      System.out.println("Name:" + Name);
+
+      String Phone = userPhone.getText();
+      System.out.println("Phone:" + Phone);
+
+      String Email = userEmail.getText();
+      System.out.println("Email:" + Email);
+
+      System.out.println();
+
+   }
+   
+   
+   public void cancelBtn(ActionEvent event) {
+      // System.out.println("saveHandlerBtn");
+      Stage main = (Stage) cancelBtn.getScene().getWindow();
+      main.close(); 
+
+   }
+   
+     public void userinfoAction(ActionEvent event) throws Exception {
+           
+//        lblStatus.setText("success"); // 로그인 성공
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/com/sist/mypage/view/MyPage01_UserInfo.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        Stage main = (Stage) userinfobtn.getScene().getWindow();
+        main.close();     
+        
+        
+      
+        
+
+     }
+   
+   
+   
+     public void bookinghistoryAction(ActionEvent event) throws Exception {
+        
+//             lblStatus.setText("success"); // 로그인 성공
+             Stage primaryStage = new Stage();
+             Parent root = FXMLLoader.load(getClass().getResource("/com/sist/mypage/view/MyPage03_BookingHistory01.fxml"));
+             Scene scene = new Scene(root);
+             primaryStage.setScene(scene);
+             primaryStage.show();
+
+             Stage main = (Stage) bookinghistorybtn.getScene().getWindow();
+             main.close();     
+          
+     }
+     
+     public void bookinglistAction(ActionEvent event) throws Exception {
+           
+//        lblStatus.setText("success"); // 로그인 성공
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/com/sist/mypage/view/MyPage02_BookingList.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        Stage main = (Stage) bookinglistbtn.getScene().getWindow();
+        main.close();     
+      
+        
+   }
+
+}

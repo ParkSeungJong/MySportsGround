@@ -1,0 +1,384 @@
+package com.sist.booking.dao;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import javax.swing.plaf.basic.BasicScrollPaneUI.VSBChangeListener;
+
+import com.sist.dto.workdiv.DTO;
+import com.sist.dto.workdiv.WorkDiv;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+
+public class BookingDAO implements WorkDiv {
+	private List<BookingVO> booking = new ArrayList<BookingVO>();
+	private final String ADD_FILE = "csv/booking.csv";
+
+	public BookingDAO() {
+		booking = readFile(ADD_FILE);
+		disp(booking);
+	}
+
+//List�? 콘솔?�� 출력
+	public void disp(List<BookingVO> booking) {
+		for (BookingVO vo : booking) {
+			System.out.println(vo);
+		}
+	}
+
+	/**
+	 * 쉼표로 구분된 데이터를 입력 받아 MemberVO 리턴
+	 * 
+	 * @param dataScanner
+	 * @return
+	 */
+	public BookingVO getSearchData(Scanner dataScanner) {
+		BookingVO outVO = null;
+		dataScanner = new Scanner(System.in);
+		System.out.println("검색 데이터 입력(1.지역 2.날짜>>");
+		String inputData = dataScanner.nextLine();
+		inputData = inputData.trim(); // 앞뒤 공백 제거
+
+		String[] dataArray = inputData.split(",");
+		outVO = new BookingVO();
+		outVO.setFacilityArea(dataArray[0]);
+		outVO.setBookingDate(dataArray[1]);
+		// System.out.println("입력: "+outVO);
+		return outVO;
+	}
+
+	// List에 있는 Data를 파일에 기록
+	public int saveFile(String path) {
+		int cnt = 0;
+		FileWriter writer = null;
+		BufferedWriter bw = null;
+		File file = new File(path);
+
+		try {
+			writer = new FileWriter(file);
+			bw = new BufferedWriter(writer);
+
+			for (int i = 0; i < booking.size(); i++) {
+				BookingVO vo = booking.get(i);
+
+				StringBuilder sb = new StringBuilder();
+				sb.append(vo.getFacilityCode() + ",");
+				sb.append(vo.getFacilityArea() + ",");
+				sb.append(vo.getFacilityName() + ",");
+				sb.append(vo.getFacilityAddress() + ",");
+				sb.append(vo.getBookingDate() + ",");
+				sb.append(vo.isBookingPossible());
+
+				// 마지막 라인에 "\n"제거
+				if ((i + 1) != booking.size()) {
+					sb.append("\n");
+				}
+				cnt++;
+				bw.write(sb.toString());
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (bw != null) {
+					bw.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} // --for
+
+		return cnt;
+	}
+
+	/**
+	 * addressBook.csv 파일에서 데이터를 읽어 List<MemberVO> 생성
+	 * 
+	 * @param filePath
+	 * @return List
+	 */
+
+	public List<BookingVO> readFile(String filePath) {
+		List<BookingVO> facilityData = new ArrayList<BookingVO>();
+		BufferedReader br = null;
+		try {
+			FileReader fr = new FileReader(filePath);
+			br = new BufferedReader(fr);
+			String line = "";
+			while ((line = br.readLine()) != null) {
+				// SEO001,서울특별시,쌍용종합운동장,송파구 마천동 산 1-5,20191230,false,user1
+				String[] dataArray = line.split(",");
+				BookingVO vo = new BookingVO(dataArray[0], dataArray[1], dataArray[2], dataArray[3], dataArray[4],
+						Boolean.valueOf(dataArray[5]),dataArray[6]);
+				facilityData.add(vo);
+
+			} // --while
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} // --if
+		}
+
+		return facilityData;
+	}
+
+	@Override
+	public int do_save(DTO dto) {
+		return 0;
+	}
+
+	@Override
+	public int do_update(DTO dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int do_delete(DTO dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public DTO do_selectOne(DTO dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<?> do_retrieve(DTO dto) {
+		List<BookingVO> list = new ArrayList<BookingVO>();
+		// 지역, 날짜 검색
+		BookingVO inVO = (BookingVO) dto;
+		for (int i = 0; i < booking.size(); i++) {
+			BookingVO vsVO = booking.get(i);
+			if (vsVO.getFacilityArea().matches(inVO.getFacilityArea() ) && vsVO.getBookingDate().matches(inVO.getBookingDate())) {
+				list.add(vsVO);
+				//System.out.println(vsVO.isBookingPossible());//전체목록중에 예약가능한 목록 출력
+			}
+			
+		}
+		
+		return list;
+	}
+	
+	public String do_retrieveName1(String ab, String bb) {
+//		List<BookingVO> list = new ArrayList<BookingVO>();
+
+		String list = "";
+		for(int i=0;i<booking.size();i++) {
+			BookingVO vo = booking.get(i);
+			if(vo.getFacilityArea().equals(ab) && vo.getBookingDate().equals(bb)) {
+				if(vo.isBookingPossible()==false){
+				list += vo.getFacilityName()+"\t";
+				}
+			}
+		}
+		return list;
+	}
+	
+	public String do_retrieveName2(String ab, String bb) {
+//		List<BookingVO> list = new ArrayList<BookingVO>();
+	
+		String list = "";
+		for(int i=0;i<booking.size();i++) {
+			BookingVO vo = booking.get(i);
+			if(vo.getFacilityArea().equals(ab) && vo.getBookingDate().equals(bb)) {
+				if(vo.isBookingPossible()!=false){
+				list += vo.getFacilityName()+"\t";
+				}
+			}
+		}
+		return list;
+	}
+		public String do_retrieveDate1(String ab, String bb) {
+//			List<BookingVO> list = new ArrayList<BookingVO>();
+		
+			String list = "";
+			for(int i=0;i<booking.size();i++) {
+				BookingVO vo = booking.get(i);
+				if(vo.getFacilityArea().equals(ab) && vo.getBookingDate().equals(bb)) {
+					if(vo.isBookingPossible()==false){
+					list += vo.getBookingDate()+"\t";
+					}
+				}
+			}
+			return list;
+		
+	}
+		
+		public String do_retrieveDate2(String ab, String bb) {
+//			List<BookingVO> list = new ArrayList<BookingVO>();
+			
+			String list = "";
+			for(int i=0;i<booking.size();i++) {
+				BookingVO vo = booking.get(i);
+				if(vo.getFacilityArea().equals(ab) && vo.getBookingDate().equals(bb)) {
+					if(vo.isBookingPossible()!=false){
+					list += vo.getBookingDate()+"\t";
+					}
+				}
+			}
+			return list;
+		
+	}
+		public String do_retrieveAddress1(String ab, String bb) {
+//			List<BookingVO> list = new ArrayList<BookingVO>();
+	
+			String list = "";
+			for(int i=0;i<booking.size();i++) {
+				BookingVO vo = booking.get(i);
+				if(vo.getFacilityArea().equals(ab) && vo.getBookingDate().equals(bb)) {
+
+					if(vo.isBookingPossible()==false){
+						list += vo.getFacilityAddress()+"\t";
+					}
+				}
+			}
+			return list;
+		
+	}
+		public String do_retrieveAddress2(String ab, String bb) {
+//			List<BookingVO> list = new ArrayList<BookingVO>();
+		
+			String list = "";
+			for(int i=0;i<booking.size();i++) {
+				BookingVO vo = booking.get(i);
+				if(vo.getFacilityArea().equals(ab) && vo.getBookingDate().equals(bb)) {
+
+					if(vo.isBookingPossible()!=false){
+						list += vo.getFacilityAddress()+"\t";
+					}
+				}
+			}
+			return list;
+		
+	}
+	public String do_retrieveImagePath1(String ab, String bb) {
+//			List<BookingVO> list = new ArrayList<BookingVO>();
+		
+			String list = "";
+			for(int i=0;i<booking.size();i++) {
+				BookingVO vo = booking.get(i);
+				if(vo.getFacilityArea().equals(ab) && vo.getBookingDate().equals(bb)) {
+
+					if(vo.isBookingPossible()==false){
+						list += vo.getImagePath();
+					}
+				}
+			}
+			return list;
+		
+	}
+	public String do_retrieveImagePath2(String ab, String bb) {
+//		List<BookingVO> list = new ArrayList<BookingVO>();
+	
+		String list = "";
+		for(int i=0;i<booking.size();i++) {
+			BookingVO vo = booking.get(i);
+			if(vo.getFacilityArea().equals(ab) && vo.getBookingDate().equals(bb)) {
+
+				if(vo.isBookingPossible()!=false){
+					list += vo.getImagePath();
+				}
+			}
+		}
+		return list;
+	
+}
+		
+	public Paint do_retrieveColor1(String ab, String bb) {
+//			List<BookingVO> list = new ArrayList<BookingVO>();
+		
+			Paint list = Color.BLUE;
+			for(int i=0;i<booking.size();i++) {
+				BookingVO vo = booking.get(i);
+				if(vo.getFacilityArea().equals(ab) && vo.getBookingDate().equals(bb)) {
+					if(vo.isBookingPossible()==false){
+						System.out.println(vo.isBookingPossible());
+						list = Color.RED;
+					}
+				}
+			}
+			return list;
+		
+	}
+	
+	public Paint do_retrieveColor2(String ab, String bb) {
+//		List<BookingVO> list = new ArrayList<BookingVO>();
+
+		Paint list = Color.BLUE;
+		for(int i=0;i<booking.size();i++) {
+			BookingVO vo = booking.get(i);
+			if(vo.getFacilityArea().equals(ab) && vo.getBookingDate().equals(bb)) {
+				if(vo.isBookingPossible()!=false){
+					System.out.println(vo.isBookingPossible());
+					list = Color.BLUE;
+				}
+			}
+		}
+		return list;
+	
+	}	
+	
+		
+	public String do_retrieveArray(String ab, String bb) {//
+		
+
+		String list = "";
+		for(int i=0;i<booking.size();i++) {
+			BookingVO vo = booking.get(i);
+			if(vo.getFacilityArea().equals(ab) && vo.getBookingDate().equals(bb)) {
+						list += vo.getFacilityCode()+"\t"+
+						vo.getFacilityArea()+"\t"+
+						vo.getFacilityName()+"\t"+
+						vo.getFacilityAddress()+"\t"+
+						vo.getBookingDate()+"\t"+
+						vo.isBookingPossible()+"\n";
+			}	
+		}
+		return list;
+	}
+	
+	
+	//@Override
+	public List<?> bookingPossible(DTO dto) {
+		List<BookingVO> list = new ArrayList<BookingVO>();
+
+		BookingVO inVO = (BookingVO) dto;
+		for (int i = 0; i < booking.size(); i++) {
+			BookingVO vsVO = booking.get(i);
+			if (vsVO.getFacilityArea().matches(inVO.getFacilityArea() ) && vsVO.getBookingDate().matches(inVO.getBookingDate())) {
+				//list.add(vsVO);
+				
+				System.out.println(vsVO.isBookingPossible());//�??��목록중에?�� ?��?���??��?�� 추출
+			}
+			
+		}
+		
+		return list;
+	}
+
+	
+	
+	
+	
+	
+}

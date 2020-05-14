@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="873.0" prefWidth="1244.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sist.facility.controller.Facility01Controller">
+   <children>
+      <Label layoutX="14.0" layoutY="264.0" prefHeight="74.0" prefWidth="425.0" style="-fx-font-size: 40;" text="시설목록" />
+      <Pane layoutX="4.0" layoutY="82.0" />
+      <SplitPane dividerPositions="0.29797979797979796" layoutX="4.0" layoutY="347.0" prefHeight="250.0" prefWidth="1237.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="185.0" prefWidth="358.0">
+               <children>
+                  <ImageView fitHeight="207.0" fitWidth="357.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text layoutX="23.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T_ 경기장 이미지">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="848.0">
+               <children>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="848.0">
+                     <children>
+                        <Button layoutX="676.0" layoutY="184.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" style="-fx-font-size: 25; -fx-background-color: gray;" text="상세보기" />
+                        <GridPane layoutX="24.0" layoutY="182.0" prefHeight="57.0" prefWidth="627.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="170.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="170.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="170.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="170.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                              <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <TextField alignment="CENTER" prefHeight="57.0" prefWidth="146.0" style="-fx-background-color: gray;" text="천연잔디" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField alignment="CENTER" prefHeight="60.0" prefWidth="100.0" style="-fx-background-color: gray;" text="조명있음" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField alignment="CENTER" prefHeight="60.0" prefWidth="100.0" style="-fx-background-color: gray;" text="주차장 있음" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <TextField alignment="CENTER" prefHeight="55.0" prefWidth="135.0" style="-fx-background-color: gray;" text="샤워실 없음" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                           </children>
+                        </GridPane>
+                        <TextField editable="false" prefHeight="50.0" prefWidth="358.0" style="-fx-font-size: 30; -fx-background-color: gray;" text="경기장명" />
+                        <Text layoutX="409.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25;" text="주소" wrappingWidth="344.0" />
+                        <Label layoutX="34.0" layoutY="74.0" style="-fx-font-size: 15;" text="경기장 규격" />
+                        <Text layoutX="130.0" layoutY="88.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" text="100 x 70" />
+                        <Label layoutX="34.0" layoutY="105.0" style="-fx-font-size: 15;" text="추천 인원" />
+                        <Label layoutX="34.0" layoutY="137.0" style="-fx-font-size: 15;" text="문의사항" />
+                        <Text layoutX="130.0" layoutY="119.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" text="11 vs 11" />
+                        <Text layoutX="130.0" layoutY="152.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" text="02 ) 000-0000" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+      <SplitPane dividerPositions="0.29797979797979796" layoutX="4.0" layoutY="609.0" prefHeight="250.0" prefWidth="1237.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="185.0" prefWidth="358.0">
+               <children>
+                  <ImageView fitHeight="207.0" fitWidth="357.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="848.0">
+               <children>
+                  <Button layoutX="676.0" layoutY="184.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" style="-fx-font-size: 25; -fx-background-color: gray;" text="상세보기" />
+                  <GridPane layoutX="24.0" layoutY="182.0" prefHeight="57.0" prefWidth="627.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="170.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="170.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="170.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="170.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                        <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <TextField alignment="CENTER" prefHeight="57.0" prefWidth="146.0" style="-fx-background-color: gray;" text="천연잔디" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField alignment="CENTER" prefHeight="60.0" prefWidth="100.0" style="-fx-background-color: gray;" text="조명있음" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField alignment="CENTER" prefHeight="60.0" prefWidth="100.0" style="-fx-background-color: gray;" text="주차장 있음" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField alignment="CENTER" prefHeight="55.0" prefWidth="135.0" style="-fx-background-color: gray;" text="샤워실 없음" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                     </children>
+                  </GridPane>
+                  <TextField editable="false" prefHeight="50.0" prefWidth="358.0" style="-fx-font-size: 30; -fx-background-color: gray;" text="경기장명" />
+                  <Text layoutX="409.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 25;" text="주소" wrappingWidth="344.0" />
+                  <Label layoutX="34.0" layoutY="74.0" style="-fx-font-size: 15;" text="경기장 규격" />
+                  <Text layoutX="130.0" layoutY="88.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" text="100 x 70" />
+                  <Label layoutX="34.0" layoutY="105.0" style="-fx-font-size: 15;" text="추천 인원" />
+                  <Label layoutX="34.0" layoutY="137.0" style="-fx-font-size: 15;" text="문의사항" />
+                  <Text layoutX="130.0" layoutY="119.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" text="11 vs 11" />
+                  <Text layoutX="130.0" layoutY="152.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" text="02 ) 000-0000" />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+      <ButtonBar layoutX="801.0" layoutY="32.0" prefHeight="40.0" prefWidth="200.0" />
+      <ImageView fitHeight="300.0" fitWidth="1000.0" layoutX="122.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../image/msglogo.PNG" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

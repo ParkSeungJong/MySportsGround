@@ -1,0 +1,53 @@
+package com.sist.facility.dao;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javafx.scene.text.Text;
+
+public class FacilityInfoDAO {
+	
+	private List<FacilityInfoVO> facilityinfo = new ArrayList<FacilityInfoVO>();
+	
+//List를 콘솔에 출력
+	public void disp(List<FacilityInfoVO> facilityinfo) {
+		for(FacilityInfoVO vo :facilityinfo ) {
+			System.out.println(vo);
+		}
+	}
+	
+	public List<FacilityInfoVO> do_read(String filePath){
+		ArrayList<FacilityInfoVO> facilityData = new ArrayList<FacilityInfoVO>();
+		BufferedReader br = null;
+		try {
+			FileReader fr = new FileReader(filePath);
+			br = new BufferedReader(fr);
+			String line = "";
+			while((line = br.readLine())!=null) {
+				String[] dataArray = line.split(",");
+				FacilityInfoVO vo =new FacilityInfoVO(dataArray[0],dataArray[1]);
+				facilityData.add(vo);
+			}//--while
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if(br!= null) {
+				try {
+					br.close();
+				}catch(IOException e) {
+					e.printStackTrace();
+				}
+			}//--if
+		}
+		
+		return facilityData;		
+	}
+	
+}

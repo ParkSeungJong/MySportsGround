@@ -1,0 +1,50 @@
+package com.sist.facility.dao;
+
+public class FacilityInfoVO {
+
+	private String first_col;
+	private String second_col;
+	
+	public FacilityInfoVO() {}
+
+	public FacilityInfoVO(String first_col, String second_col) {
+		super();
+		this.first_col = first_col;
+		this.second_col = second_col;
+	}
+
+	/**
+	 * @return the first_col
+	 */
+	public String getFirst_col() {
+		return first_col;
+	}
+
+	/**
+	 * @param first_col the first_col to set
+	 */
+	public void setFirst_col(String first_col) {
+		this.first_col = first_col;
+	}
+
+	/**
+	 * @return the second_col
+	 */
+	public String getSecond_col() {
+		return second_col;
+	}
+
+	/**
+	 * @param second_col the second_col to set
+	 */
+	public void setSecond_col(String second_col) {
+		this.second_col = second_col;
+	}
+
+	@Override
+	public String toString() {
+		return "FacilityHistoryVO [first_col=" + first_col + ", second_col=" + second_col + "]";
+	}
+
+	
+}

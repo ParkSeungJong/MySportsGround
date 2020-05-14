@@ -1,0 +1,118 @@
+package com.sist.booking.controller;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import com.sist.booking.dao.BookingDAO;
+import com.sist.booking.dao.BookingVO;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+public class Booking03_UserInformationController implements Initializable {
+	Alert alert = new Alert(AlertType.WARNING);
+
+	BookingDAO dao = new BookingDAO();
+	Booking02_listController blc = new Booking02_listController();
+
+	@FXML
+	Text txtDate, txtFsName, txtAddress, txtId;
+	@FXML
+	Button bookBtn;
+	@FXML
+	TextField tfTeam, tfUserNumber, tfUserName;
+	@FXML
+	CheckBox check1, check2;
+
+	String farea = Booking02_listController.farea;
+	String fdate = Booking02_listController.fdate;
+
+	static String team;
+	static String userNum;
+	static String userName;
+	static String userId;
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		alert.setTitle("MSG");
+		alert.setHeaderText("Look, a Dialog");
+
+		bookBtn.setOnAction(event -> bookBtnAction(event));
+
+		String bookingFsName = Booking02_listController.bookingFsName;
+		String date = Booking02_listController.date;
+		String address = Booking02_listController.address;
+
+		/*
+		 * txtDate.setText(date); txtFsName.setText(bookingFsName);
+		 * txtAddress.setText(address);
+		 */
+
+		txtId.setText(null); // 아이디값 불러오기
+
+	}
+
+	public void bookBtnAction(ActionEvent event) {
+
+		try {
+			if (check1.isSelected() == true && check2.isSelected() == true) {
+
+				alert.setContentText("예약을 완료하였습니다.");
+				alert.showAndWait();
+
+				// team = tfTeam.getText();
+				userNum = tfUserNumber.getText();
+				userName = tfUserName.getText();
+				userId = txtId.getText();
+				
+				
+				
+				//  01 검색할 키값
+//				BookingVO vo = new BookingVO();
+//				vo = dao.getInputfCode("SEO002");
+//
+//				// 02 업데이트 할 값을 정제.
+//				BookingVO resultVO = new BookingVO();
+//				resultVO = dao.do_selectOne2(vo);
+//				resultVO.setUserId("TEST");
+//				resultVO.setUserName(tfUserName.getText());
+//				resultVO.setUserPhoneNumber(tfUserNumber.getText());
+				
+				
+				// 03 코드값을 키로 삭제 후 정제한 값으로 저장.
+				//dao.do_update(resultVO);
+
+		
+				
+				//dao.getUpdatepointData(dao.code(farea, fdate, true), "user2", "승종", "010101");
+
+				Parent second = FXMLLoader
+						.load(getClass().getResource("/com/sist/booking/view/Booking04_Complete.fxml"));
+				Scene scene = new Scene(second);
+				Stage primaryStage = (Stage) bookBtn.getScene().getWindow();
+				primaryStage.setScene(scene);
+				
+			} else {
+				alert.setContentText("개인정보, 이용약관을 동의해주세요.");
+				alert.showAndWait();
+
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}

@@ -1,0 +1,305 @@
+2019-12-18 12:32:14,021 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:86)     - Connection=oracle.jdbc.driver.T4CConnection@45a8acda
+2019-12-18 12:32:14,116 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:86)     - Connection=oracle.jdbc.driver.T4CConnection@25346848
+2019-12-18 12:32:14,141 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:86)     - Connection=oracle.jdbc.driver.T4CConnection@36988718
+2019-12-18 12:32:14,141 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:567)     - =============================
+2019-12-18 12:32:14,141 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:568)     - 01. Connection=oracle.jdbc.driver.T4CConnection@36988718
+2019-12-18 12:32:14,142 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:569)     - =============================
+2019-12-18 12:32:14,142 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:593)     - =============================
+2019-12-18 12:32:14,142 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:594)     - 02. sql=
+  SELECT            
+      mem_id,       
+      grp_div,      
+      pw,           
+      name,         
+      auth,         
+      email,        
+      cellphone,    
+      address,      
+      addr_dtail,   
+      point,        
+      reg_dt,       
+      reg_id,       
+      mod_dt,       
+      mod_id        
+  FROM member       
+  WHERE mem_id = ?  
+  AND grp_div  = ?  
+
+2019-12-18 12:32:14,142 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:595)     - =============================
+2019-12-18 12:32:14,142 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:603)     - =============================
+2019-12-18 12:32:14,142 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:604)     - 03. getMemId=
+user2
+2019-12-18 12:32:14,142 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:605)     - 03. getGrpDiv=
+5
+2019-12-18 12:32:14,143 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:606)     - =============================
+2019-12-18 12:32:14,148 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:631)     - =============================
+2019-12-18 12:32:14,148 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:632)     - 04. Run outVO=
+MemberVO [memId=user2, grpDiv=5, pw=1234, name=김길동, auth=1, email=kimgildong@naver.com, cellphone=010-1111-0002, address=서울시관악구, addrDtail=null, point=null, regDt=2019-12-12 15:11:52, regId=admin, modDt=2019-12-12 15:11:52, modId=admin, toString()=DTO [no=null, message=null, messageDiv=null, total=0, grpDiv=null]]
+2019-12-18 12:32:14,148 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:633)     - =============================
+2019-12-18 12:38:57,122 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:86)     - Connection=oracle.jdbc.driver.T4CConnection@7f4729bf
+2019-12-18 12:38:57,216 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:86)     - Connection=oracle.jdbc.driver.T4CConnection@6f3ac2d0
+2019-12-18 12:38:57,245 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:86)     - Connection=oracle.jdbc.driver.T4CConnection@3dc4b713
+2019-12-18 12:38:57,245 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:567)     - =============================
+2019-12-18 12:38:57,246 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:568)     - 01. Connection=oracle.jdbc.driver.T4CConnection@3dc4b713
+2019-12-18 12:38:57,246 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:569)     - =============================
+2019-12-18 12:38:57,246 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:593)     - =============================
+2019-12-18 12:38:57,246 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:594)     - 02. sql=
+  SELECT            
+      mem_id,       
+      grp_div,      
+      pw,           
+      name,         
+      auth,         
+      email,        
+      cellphone,    
+      address,      
+      addr_dtail,   
+      point,        
+      reg_dt,       
+      reg_id,       
+      mod_dt,       
+      mod_id        
+  FROM member       
+  WHERE mem_id = ?  
+  AND grp_div  = ?  
+
+2019-12-18 12:38:57,247 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:595)     - =============================
+2019-12-18 12:38:57,247 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:603)     - =============================
+2019-12-18 12:38:57,247 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:604)     - 03. getMemId=
+user2
+2019-12-18 12:38:57,248 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:605)     - 03. getGrpDiv=
+5
+2019-12-18 12:38:57,248 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:606)     - =============================
+2019-12-18 12:38:57,254 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:631)     - =============================
+2019-12-18 12:38:57,254 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:632)     - 04. Run outVO=
+MemberVO [memId=user2, grpDiv=5, pw=1234, name=김길동, auth=1, email=kimgildong@naver.com, cellphone=010-1111-0002, address=서울시관악구, addrDtail=null, point=null, regDt=2019-12-12 15:11:52, regId=admin, modDt=2019-12-12 15:11:52, modId=admin, toString()=DTO [no=null, message=null, messageDiv=null, total=0, grpDiv=null]]
+2019-12-18 12:38:57,254 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:633)     - =============================
+2019-12-18 12:41:29,883 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:86)     - Connection=oracle.jdbc.driver.T4CConnection@7f4729bf
+2019-12-18 12:41:29,970 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:86)     - Connection=oracle.jdbc.driver.T4CConnection@6f3ac2d0
+2019-12-18 12:41:29,998 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:86)     - Connection=oracle.jdbc.driver.T4CConnection@3dc4b713
+2019-12-18 12:41:29,999 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:567)     - =============================
+2019-12-18 12:41:29,999 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:568)     - 01. Connection=oracle.jdbc.driver.T4CConnection@3dc4b713
+2019-12-18 12:41:29,999 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:569)     - =============================
+2019-12-18 12:41:29,999 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:593)     - =============================
+2019-12-18 12:41:29,999 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:594)     - 02. sql=
+  SELECT            
+      mem_id,       
+      grp_div,      
+      pw,           
+      name,         
+      auth,         
+      email,        
+      cellphone,    
+      address,      
+      addr_dtail,   
+      point,        
+      reg_dt,       
+      reg_id,       
+      mod_dt,       
+      mod_id        
+  FROM member       
+  WHERE mem_id = ?  
+  AND grp_div  = ?  
+
+2019-12-18 12:41:29,999 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:595)     - =============================
+2019-12-18 12:41:29,999 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:603)     - =============================
+2019-12-18 12:41:30,000 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:604)     - 03. getMemId=
+user2
+2019-12-18 12:41:30,000 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:605)     - 03. getGrpDiv=
+5
+2019-12-18 12:41:30,000 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:606)     - =============================
+2019-12-18 12:41:30,004 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:631)     - =============================
+2019-12-18 12:41:30,005 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:632)     - 04. Run outVO=
+MemberVO [memId=user2, grpDiv=5, pw=1234, name=김길동, auth=1, email=kimgildong@naver.com, cellphone=010-1111-0002, address=서울시관악구, addrDtail=null, point=null, regDt=2019-12-12 15:11:52, regId=admin, modDt=2019-12-12 15:11:52, modId=admin, toString()=DTO [no=null, message=null, messageDiv=null, total=0, grpDiv=null]]
+2019-12-18 12:41:30,005 DEBUG [JavaFX Application Thread] dao.MemberDao     (MemberDao.java:633)     - =============================
+2019-12-19 15:38:04,420 DEBUG [JavaFX Application Thread] controller.HROraConnectionMaker (HROraConnectionMaker.java:69)     - Connection=oracle.jdbc.driver.T4CConnection@4e615b0c
+2019-12-19 15:38:04,603 DEBUG [JavaFX Application Thread] controller.HROraConnectionMaker (HROraConnectionMaker.java:69)     - Connection=oracle.jdbc.driver.T4CConnection@62f91348
+2019-12-19 15:38:04,654 DEBUG [JavaFX Application Thread] controller.HROraConnectionMaker (HROraConnectionMaker.java:69)     - Connection=oracle.jdbc.driver.T4CConnection@30610e9d
+2019-12-19 15:38:04,655 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:565)     - =============================
+2019-12-19 15:38:04,655 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:566)     - 01. Connection=oracle.jdbc.driver.T4CConnection@30610e9d
+2019-12-19 15:38:04,656 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:567)     - =============================
+2019-12-19 15:38:04,656 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:591)     - =============================
+2019-12-19 15:38:04,657 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:592)     - 02. sql=
+  SELECT            
+      mem_id,       
+      grp_div,      
+      pw,           
+      name,         
+      auth,         
+      email,        
+      cellphone,    
+      address,      
+      addr_dtail,   
+      point,        
+      reg_dt,       
+      reg_id,       
+      mod_dt,       
+      mod_id        
+  FROM member       
+  WHERE mem_id = ?  
+  AND grp_div  = ?  
+
+2019-12-19 15:38:04,657 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:593)     - =============================
+2019-12-19 15:38:04,658 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:601)     - =============================
+2019-12-19 15:38:04,658 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:602)     - 03. getMemId=
+user1
+2019-12-19 15:38:04,658 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:603)     - 03. getGrpDiv=
+5
+2019-12-19 15:38:04,659 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:604)     - =============================
+2019-12-19 15:38:04,670 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:629)     - =============================
+2019-12-19 15:38:04,670 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:630)     - 04. Run outVO=
+MemberVO [memId=user1, grpDiv=5, pw=1234, name=홍길동, auth=1, email=honggildong@naver.com, cellphone=010-1111-0001, address=서울시 마포구, addrDtail=null, point=null, regDt=2019-12-12 15:11:52, regId=admin, modDt=2019-12-12 15:11:52, modId=admin, toString()=DTO [no=null, message=null, messageDiv=null, total=0, grpDiv=null]]
+2019-12-19 15:38:04,671 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:631)     - =============================
+2019-12-19 15:39:29,395 DEBUG [JavaFX Application Thread] controller.HROraConnectionMaker (HROraConnectionMaker.java:69)     - Connection=oracle.jdbc.driver.T4CConnection@f50b7dd
+2019-12-19 15:39:32,577 DEBUG [JavaFX Application Thread] controller.HROraConnectionMaker (HROraConnectionMaker.java:69)     - Connection=oracle.jdbc.driver.T4CConnection@2e3ea135
+2019-12-19 15:39:32,632 DEBUG [JavaFX Application Thread] controller.HROraConnectionMaker (HROraConnectionMaker.java:69)     - Connection=oracle.jdbc.driver.T4CConnection@3ba934a8
+2019-12-19 15:39:32,682 DEBUG [JavaFX Application Thread] controller.HROraConnectionMaker (HROraConnectionMaker.java:69)     - Connection=oracle.jdbc.driver.T4CConnection@12a71c9
+2019-12-19 15:39:32,683 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:565)     - =============================
+2019-12-19 15:39:32,683 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:566)     - 01. Connection=oracle.jdbc.driver.T4CConnection@12a71c9
+2019-12-19 15:39:32,683 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:567)     - =============================
+2019-12-19 15:39:32,684 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:591)     - =============================
+2019-12-19 15:39:32,684 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:592)     - 02. sql=
+  SELECT            
+      mem_id,       
+      grp_div,      
+      pw,           
+      name,         
+      auth,         
+      email,        
+      cellphone,    
+      address,      
+      addr_dtail,   
+      point,        
+      reg_dt,       
+      reg_id,       
+      mod_dt,       
+      mod_id        
+  FROM member       
+  WHERE mem_id = ?  
+  AND grp_div  = ?  
+
+2019-12-19 15:39:32,684 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:593)     - =============================
+2019-12-19 15:39:32,685 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:601)     - =============================
+2019-12-19 15:39:32,685 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:602)     - 03. getMemId=
+user1
+2019-12-19 15:39:32,686 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:603)     - 03. getGrpDiv=
+5
+2019-12-19 15:39:32,686 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:604)     - =============================
+2019-12-19 15:39:32,697 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:629)     - =============================
+2019-12-19 15:39:32,698 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:630)     - 04. Run outVO=
+MemberVO [memId=user1, grpDiv=5, pw=1234, name=홍길동, auth=1, email=honggildong@naver.com, cellphone=010-1111-0001, address=서울시 마포구, addrDtail=null, point=null, regDt=2019-12-12 15:11:52, regId=admin, modDt=2019-12-12 15:11:52, modId=admin, toString()=DTO [no=null, message=null, messageDiv=null, total=0, grpDiv=null]]
+2019-12-19 15:39:32,699 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:631)     - =============================
+2019-12-19 15:42:35,057 DEBUG [JavaFX Application Thread] controller.HROraConnectionMaker (HROraConnectionMaker.java:69)     - Connection=oracle.jdbc.driver.T4CConnection@51ee35fd
+2019-12-19 15:42:35,243 DEBUG [JavaFX Application Thread] controller.HROraConnectionMaker (HROraConnectionMaker.java:69)     - Connection=oracle.jdbc.driver.T4CConnection@75f69111
+2019-12-19 15:42:35,313 DEBUG [JavaFX Application Thread] controller.HROraConnectionMaker (HROraConnectionMaker.java:69)     - Connection=oracle.jdbc.driver.T4CConnection@1c7aa76f
+2019-12-19 15:42:35,313 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:565)     - =============================
+2019-12-19 15:42:35,314 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:566)     - 01. Connection=oracle.jdbc.driver.T4CConnection@1c7aa76f
+2019-12-19 15:42:35,314 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:567)     - =============================
+2019-12-19 15:42:35,315 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:591)     - =============================
+2019-12-19 15:42:35,315 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:592)     - 02. sql=
+  SELECT            
+      mem_id,       
+      grp_div,      
+      pw,           
+      name,         
+      auth,         
+      email,        
+      cellphone,    
+      address,      
+      addr_dtail,   
+      point,        
+      reg_dt,       
+      reg_id,       
+      mod_dt,       
+      mod_id        
+  FROM member       
+  WHERE mem_id = ?  
+  AND grp_div  = ?  
+
+2019-12-19 15:42:35,315 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:593)     - =============================
+2019-12-19 15:42:35,316 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:601)     - =============================
+2019-12-19 15:42:35,316 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:602)     - 03. getMemId=
+user1
+2019-12-19 15:42:35,317 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:603)     - 03. getGrpDiv=
+5
+2019-12-19 15:42:35,317 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:604)     - =============================
+2019-12-19 15:42:35,330 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:629)     - =============================
+2019-12-19 15:42:35,331 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:630)     - 04. Run outVO=
+MemberVO [memId=user1, grpDiv=5, pw=1234, name=홍길동, auth=1, email=honggildong@naver.com, cellphone=010-1111-0001, address=서울시 마포구, addrDtail=null, point=null, regDt=2019-12-12 15:11:52, regId=admin, modDt=2019-12-12 15:11:52, modId=admin, toString()=DTO [no=null, message=null, messageDiv=null, total=0, grpDiv=null]]
+2019-12-19 15:42:35,331 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:631)     - =============================
+2019-12-19 15:42:49,295 DEBUG [JavaFX Application Thread] controller.HROraConnectionMaker (HROraConnectionMaker.java:69)     - Connection=oracle.jdbc.driver.T4CConnection@4e615b0c
+2019-12-19 15:42:49,449 DEBUG [JavaFX Application Thread] controller.HROraConnectionMaker (HROraConnectionMaker.java:69)     - Connection=oracle.jdbc.driver.T4CConnection@62f91348
+2019-12-19 15:42:49,510 DEBUG [JavaFX Application Thread] controller.HROraConnectionMaker (HROraConnectionMaker.java:69)     - Connection=oracle.jdbc.driver.T4CConnection@30610e9d
+2019-12-19 15:42:49,511 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:565)     - =============================
+2019-12-19 15:42:49,511 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:566)     - 01. Connection=oracle.jdbc.driver.T4CConnection@30610e9d
+2019-12-19 15:42:49,512 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:567)     - =============================
+2019-12-19 15:42:49,512 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:591)     - =============================
+2019-12-19 15:42:49,512 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:592)     - 02. sql=
+  SELECT            
+      mem_id,       
+      grp_div,      
+      pw,           
+      name,         
+      auth,         
+      email,        
+      cellphone,    
+      address,      
+      addr_dtail,   
+      point,        
+      reg_dt,       
+      reg_id,       
+      mod_dt,       
+      mod_id        
+  FROM member       
+  WHERE mem_id = ?  
+  AND grp_div  = ?  
+
+2019-12-19 15:42:49,513 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:593)     - =============================
+2019-12-19 15:42:49,513 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:601)     - =============================
+2019-12-19 15:42:49,514 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:602)     - 03. getMemId=
+user1
+2019-12-19 15:42:49,514 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:603)     - 03. getGrpDiv=
+5
+2019-12-19 15:42:49,514 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:604)     - =============================
+2019-12-19 15:42:49,525 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:629)     - =============================
+2019-12-19 15:42:49,526 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:630)     - 04. Run outVO=
+MemberVO [memId=user1, grpDiv=5, pw=1234, name=홍길동, auth=1, email=honggildong@naver.com, cellphone=010-1111-0001, address=서울시 마포구, addrDtail=null, point=null, regDt=2019-12-12 15:11:52, regId=admin, modDt=2019-12-12 15:11:52, modId=admin, toString()=DTO [no=null, message=null, messageDiv=null, total=0, grpDiv=null]]
+2019-12-19 15:42:49,526 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:631)     - =============================
+2019-12-19 15:43:16,750 DEBUG [JavaFX Application Thread] controller.HROraConnectionMaker (HROraConnectionMaker.java:69)     - Connection=oracle.jdbc.driver.T4CConnection@4e85c90d
+2019-12-19 15:43:16,909 DEBUG [JavaFX Application Thread] controller.HROraConnectionMaker (HROraConnectionMaker.java:69)     - Connection=oracle.jdbc.driver.T4CConnection@3194ff15
+2019-12-19 15:43:16,964 DEBUG [JavaFX Application Thread] controller.HROraConnectionMaker (HROraConnectionMaker.java:69)     - Connection=oracle.jdbc.driver.T4CConnection@1f047e06
+2019-12-19 15:43:16,964 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:565)     - =============================
+2019-12-19 15:43:16,965 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:566)     - 01. Connection=oracle.jdbc.driver.T4CConnection@1f047e06
+2019-12-19 15:43:16,965 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:567)     - =============================
+2019-12-19 15:43:16,965 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:591)     - =============================
+2019-12-19 15:43:16,966 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:592)     - 02. sql=
+  SELECT            
+      mem_id,       
+      grp_div,      
+      pw,           
+      name,         
+      auth,         
+      email,        
+      cellphone,    
+      address,      
+      addr_dtail,   
+      point,        
+      reg_dt,       
+      reg_id,       
+      mod_dt,       
+      mod_id        
+  FROM member       
+  WHERE mem_id = ?  
+  AND grp_div  = ?  
+
+2019-12-19 15:43:16,966 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:593)     - =============================
+2019-12-19 15:43:16,967 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:601)     - =============================
+2019-12-19 15:43:16,967 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:602)     - 03. getMemId=
+user3
+2019-12-19 15:43:16,968 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:603)     - 03. getGrpDiv=
+5
+2019-12-19 15:43:16,968 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:604)     - =============================
+2019-12-19 15:43:16,979 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:629)     - =============================
+2019-12-19 15:43:16,979 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:630)     - 04. Run outVO=
+MemberVO [memId=user3, grpDiv=5, pw=1234, name=이길동, auth=1, email=leegildong@naver.com, cellphone=010-1111-0003, address=서울시영등포구, addrDtail=null, point=null, regDt=2019-12-12 15:11:52, regId=admin, modDt=2019-12-12 15:11:52, modId=admin, toString()=DTO [no=null, message=null, messageDiv=null, total=0, grpDiv=null]]
+2019-12-19 15:43:16,980 DEBUG [JavaFX Application Thread] controller.MemberDao (MemberDao.java:631)     - =============================

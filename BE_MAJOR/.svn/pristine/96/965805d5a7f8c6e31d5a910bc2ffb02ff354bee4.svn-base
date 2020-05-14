@@ -1,0 +1,241 @@
+package com.sist.mypage.controller;
+
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import com.sist.mypage.dao.UserDao;
+import com.sist.mypage.dao.UserVO;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+
+public class MyPage01_UserInfoController implements Initializable {
+
+	@FXML
+	TextField id;
+	@FXML PasswordField pw;
+	@FXML TextField userAddress;
+	@FXML TextField userName;
+	@FXML TextField userPhone;
+	@FXML TextField userEmail;
+	@FXML Button saveBtn;// 등록버튼
+	@FXML Button cancelBtn;//취소버튼
+	
+	@FXML Button bookinglistbtn;
+	@FXML Button userinfobtn;
+	@FXML Button bookinghistorybtn;
+	
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// 등록버튼 이벤트 감지
+		saveBtn.setOnAction(event -> saveHandlerBtn(event));
+		
+		cancelBtn.setOnAction(event -> cancelBtn(event));
+
+		
+		UserDao userdao = new UserDao();
+		UserVO uservo= new UserVO();
+		uservo.setId("user2");
+		
+//		ArrayList<UserVO> list= (ArrayList<UserVO>) userdao.do_read("src\\com\\sist\\mypage\\dao\\userinfo.csv");
+//		//id.setPromptText(userdao.do_read(id.getText()));
+//		TextField[]userinfoList = {id,userAddress,userName,userPhone,userEmail}; 
+//		PasswordField[]pwList= {pw};
+		
+		for (int i = 0; i < userdao.userinfo.size(); i++) {
+			UserVO vsVO = userdao.userinfo.get(i);
+			// 이메일을 비교, 데이터가 있으면 loop종료
+			if (vsVO.getId().equals(uservo.getId())) {
+				id.setText(vsVO.getId());
+				pw.setText(vsVO.getPw());
+				userAddress.setText(vsVO.getUserAddress());
+				userName.setText(vsVO.getUserName());
+				userPhone.setText(vsVO.getUserPhone());
+				userEmail.setText(vsVO.getUserEmail());
+			}
+			
+		}
+		
+		
+	
+	
+		
+//		userinfoList[0].setText(list.get(0).getId());
+//		userinfoList[1].setText(list.get(0).getUserAddress());
+//		userinfoList[2].setText(list.get(0).getUserName());
+//		userinfoList[3].setText(list.get(0).getUserPhone());
+//		userinfoList[4].setText(list.get(0).getUserEmail());
+//		pwList[0].setText(list.get(0).getPw());
+//		
+//		
+//		userinfoList[0].setText(list.get(1).getId());
+//		userinfoList[1].setText(list.get(1).getUserAddress());
+//		userinfoList[2].setText(list.get(1).getUserName());
+//		userinfoList[3].setText(list.get(1).getUserPhone());
+//		userinfoList[4].setText(list.get(1).getUserEmail());
+//		pwList[0].setText(list.get(1).getPw());
+//		
+////		
+////		userinfoList[0].setText(list.get(2).getId());
+////		userinfoList[1].setText(list.get(2).getUserAddress());
+//		userinfoList[2].setText(list.get(2).getUserName());
+//		userinfoList[3].setText(list.get(2).getUserPhone());
+//		userinfoList[4].setText(list.get(2).getUserEmail());
+//		pwList[0].setText(list.get(2).getPw());
+//		
+//		
+//		userinfoList[0].setText(list.get(3).getId());
+//		userinfoList[1].setText(list.get(3).getUserAddress());
+//		userinfoList[2].setText(list.get(3).getUserName());
+//		userinfoList[3].setText(list.get(3).getUserPhone());
+//		userinfoList[4].setText(list.get(3).getUserEmail());
+//		pwList[0].setText(list.get(3).getPw());
+//		
+		
+		
+		//id.setText(userdao.do_read(id.getText()));
+		
+//		TextField[]userinfoList = {id,userAddress,userName,userPhone,userEmail,pw}; 
+
+		
+//		String ID= id.getText();
+//		id.setText(ID);
+//		
+//		String passwd = pw.getText();
+//	
+		
+		
+		//id.setText(userdao.do_read(id.getText()));
+		
+		
+  
+		  
+//		  TextField textField = new TextField();
+//		  TextField id = userinfoList[0].setText(0);
+//		  String IDtxt= id.getText();
+//		  id.setText(IDtxt);
+		  
+//		  
+		  
+//			for(int i=0;i<list.size();i++) {
+//				userinfoList[i].getText();
+//			}
+		
+		
+//		String ID = id.getText();
+////		PathData.Date = tfDate.getText();
+//		UserDao dao = new UserDao();
+//		
+//		id.setTextField(dao.do_read(id.getText()));
+//						
+//		tableView.setItems(phoneList);		
+//				
+		
+		
+	
+		
+
+	}
+	
+	
+	
+			
+
+	
+
+	public void saveHandlerBtn(ActionEvent event) {
+		// System.out.println("saveHandlerBtn");
+
+		String ID = id.getText();
+		System.out.println("ID:" + ID);
+
+		String passwd = pw.getText();
+		System.out.println("passwd:" + passwd);
+
+		String Address = userAddress.getText();
+		System.out.println("Address:" + Address);
+
+		String Name = userName.getText();
+		System.out.println("Name:" + Name);
+
+		String Phone = userPhone.getText();
+		System.out.println("Phone:" + Phone);
+
+		String Email = userEmail.getText();
+		System.out.println("Email:" + Email);
+
+		System.out.println();
+
+	}
+	
+	
+	public void cancelBtn(ActionEvent event) {
+		// System.out.println("saveHandlerBtn");
+		Stage main = (Stage) cancelBtn.getScene().getWindow();
+		main.close(); 
+
+	}
+	
+	  public void userinfoAction(ActionEvent event) throws Exception {
+	        
+//        lblStatus.setText("success"); // 로그인 성공
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/com/sist/mypage/view/MyPage01_UserInfo.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        Stage main = (Stage) userinfobtn.getScene().getWindow();
+        main.close();     
+		  
+		  
+		  
+		  //id.setText(vo.getid);////민지언니 공식
+		  
+
+	  }
+	
+	
+	
+	  public void bookinghistoryAction(ActionEvent event) throws Exception {
+        
+//             lblStatus.setText("success"); // 로그인 성공
+             Stage primaryStage = new Stage();
+             Parent root = FXMLLoader.load(getClass().getResource("/com/sist/mypage/view/MyPage03_BookingHistory01.fxml"));
+             Scene scene = new Scene(root);
+             primaryStage.setScene(scene);
+             primaryStage.show();
+
+             Stage main = (Stage) bookinghistorybtn.getScene().getWindow();
+             main.close();     
+          
+	  }
+	  
+	  public void bookinglistAction(ActionEvent event) throws Exception {
+	        
+//        lblStatus.setText("success"); // 로그인 성공
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/com/sist/mypage/view/MyPage02_BookingList.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        Stage main = (Stage) bookinglistbtn.getScene().getWindow();
+        main.close();     
+      
+        
+	}
+
+}

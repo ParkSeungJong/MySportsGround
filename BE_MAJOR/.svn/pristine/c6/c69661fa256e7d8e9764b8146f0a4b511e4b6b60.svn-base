@@ -1,0 +1,808 @@
+/**
+ *<pre>
+ * com.sist.hr.member.dao
+ * Class Name : MemberDao.java
+ * Description : 
+ * Modification Information
+ * 
+ *   수정일      수정자              수정내용
+ *  ---------   ---------   -------------------------------
+ *  2019-12-05           최초생성
+ *
+ * @author 개발프레임웍크 실행환경 개발팀
+ * @since 2019-12-05 
+ * @version 1.0
+ * 
+ *
+ *  Copyright (C) by H.R. KIM All right reserved.
+ * </pre>
+ */
+package com.sist.mypage.controller;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import com.sist.hr.cmn.ConnectionMaker;
+import com.sist.hr.cmn.DTO;
+import com.sist.hr.cmn.HROraConnectionMaker;
+import com.sist.hr.cmn.JDBCUtil;
+import com.sist.hr.cmn.SearchVO;
+import com.sist.hr.cmn.WorkDiv;
+import com.sist.hr.member.domain.MemberVO;
+
+/**
+ * <pre>
+ * com.sist.hr.member.dao 
+ *    |_ MemberDao.java
+ * 
+ * </pre>
+ * @since : 2019. 12. 5. 오후 4:48:40
+ * @version : 
+ * @author : sist
+ */
+public class MemberDao implements WorkDiv {
+	static final Logger LOG= Logger.getLogger(MemberDao.class);
+	private ConnectionMaker connectionMaker;
+	
+	public MemberDao(ConnectionMaker connectionMaker) {
+		this.connectionMaker =  connectionMaker;
+	}
+
+	/**
+	 * 
+	 * <pre>
+	 * 1. 설명 : 로그인 처리(그룹,ID,비번)
+	 * 2. 처리내용 : MemberVO
+	 * </pre>
+	 * Method Name : do_login
+	 * @since : 2019. 12. 9.
+	 * @author : sist
+	 * @history : 
+	 *	-----------------------------------------------------------------------
+	 *	변경일				작성자						변경내용  
+	 *	----------- ------------------- ---------------------------------------
+	 *	2019. 12. 9.		sist				최초 작성 
+	 *	-----------------------------------------------------------------------
+	 * 
+	 * @param dto
+	 * @return MemberVO
+	 */
+	public MemberVO do_login(DTO  dto){
+		MemberVO memberVO=(MemberVO) dto;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int idCnt = checkUserId(memberVO);
+		if( idCnt ==  0){
+			memberVO.setMessage("ID를 확인 하세요.");
+			memberVO.setMessageDiv("00");//ID를 확인 하세요.
+			return memberVO;
+		}
+		
+		int passwdCnt = this.checkPasswd(memberVO);
+		if( passwdCnt ==  0){
+			memberVO.setMessage("비밀번호를 확인 하세요.");
+			memberVO.setMessageDiv("01");//비밀번호를 확인 하세요.
+			return memberVO;
+		}
+		
+		
+		MemberVO outMember= (MemberVO) do_selectOne(memberVO);
+		//--Message
+		outMember.setMessageDiv("11");
+		outMember.setMessage("["+outMember.getName()+"]님\n환영 합니다.");
+		
+		return outMember;		
+	}
+	/**
+	 * 
+	 * <pre>
+	 * 1. 설명 : 비번이 맞는지 확인 
+	 * 2. 처리내용 : 그룹,ID,비번
+	 * </pre>
+	 * Method Name : checkPasswd
+	 * @since : 2019. 12. 9.
+	 * @author : sist
+	 * @history : 
+	 *	-----------------------------------------------------------------------
+	 *	변경일				작성자						변경내용  
+	 *	----------- ------------------- ---------------------------------------
+	 *	2019. 12. 9.		sist				최초 작성 
+	 *	-----------------------------------------------------------------------
+	 * 
+	 * @param dto
+	 * @return 1(일치)/0(불일치)
+	 */
+	public int checkPasswd(DTO dto) {
+		MemberVO memberVO=(MemberVO) dto;
+		//USER_ID 체크
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		StringBuilder sb=new StringBuilder();
+		Connection conn = null;
+		try {
+			conn = connectionMaker.makeConnection();
+			
+			sb.append(" SELECT COUNT(*) as cnt   \n");
+			sb.append("   FROM member     \n");
+			sb.append("  WHERE mem_id = ? \n");
+			sb.append("  AND grp_div  = ? \n");
+			sb.append("  AND pw  = ? \n");
+			
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setString(1, memberVO.getMemId());
+			pstmt.setString(2, memberVO.getGrpDiv());
+			pstmt.setString(3, memberVO.getPw());
+
+			System.out.println("=====================");
+			System.out.println("checkPasswd : \n" + sb.toString());
+			System.out.println("memberVO : " + memberVO);
+			System.out.println("=====================");
+			
+			
+			rs = pstmt.executeQuery();
+
+			if(rs.next())
+			{
+				result = rs.getInt("cnt");
+			}
+			
+		}catch(Exception ex){
+			System.out.println("=====================");
+			System.out.println("SelectDBCountDao : " + ex);
+			System.out.println("=====================");
+		}finally{
+
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+			JDBCUtil.close(conn);	
+		}
+		System.out.println("=====================");
+		System.out.println("checkPasswd : " );
+		System.out.println("result : " + result);
+		System.out.println("=====================");
+		
+		return result;
+	}
+	
+	/**
+	 * 
+	 * <pre>
+	 * 1. 설명 : 비번 id
+	 * 2. 처리내용 : 그룹,ID
+	 * </pre>
+	 * Method Name : checkUserId
+	 * @since : 2019. 12. 9.
+	 * @author : sist
+	 * @history : 
+	 *	-----------------------------------------------------------------------
+	 *	변경일				작성자						변경내용  
+	 *	----------- ------------------- ---------------------------------------
+	 *	2019. 12. 9.		sist				최초 작성 
+	 *	-----------------------------------------------------------------------
+	 * 
+	 * @param DTO
+	 * @return 1(일치)/0(불일치)
+	 */
+	public int checkUserId(DTO dto) {
+		MemberVO memberVO=(MemberVO) dto;
+		//USER_ID 체크
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		StringBuilder sb=new StringBuilder();
+		Connection conn = null;
+		try {
+			conn = connectionMaker.makeConnection();
+			
+			sb.append(" SELECT COUNT(*) as cnt   \n");
+			sb.append("   FROM member     \n");
+			sb.append("  WHERE mem_id = ? \n");
+			sb.append("  AND grp_div  = ? \n");
+			
+			pstmt = conn.prepareStatement(sb.toString());
+			System.out.println("=====================");
+			System.out.println("checkUserId : \n" + sb.toString());
+			System.out.println("memberVO : " + memberVO);
+			System.out.println("=====================");
+			
+			pstmt.setString(1, memberVO.getMemId());
+			pstmt.setString(2, memberVO.getGrpDiv());
+			
+			rs = pstmt.executeQuery();
+
+			if(rs.next())
+			{
+				result = rs.getInt("cnt");
+			}
+			
+		}catch(Exception ex){
+			System.out.println("=====================");
+			System.out.println("SelectDBCountDao : " + ex);
+			System.out.println("=====================");
+		}finally{
+				JDBCUtil.close(rs);
+				JDBCUtil.close(pstmt);
+				JDBCUtil.close(conn);	
+		}
+		
+		System.out.println("=====================");
+		System.out.println("checkUserId : " );
+		System.out.println("result : " + result);
+		System.out.println("=====================");		
+		return result;
+	}
+	
+	/**
+	 * <pre>
+	 * 1. 개요 : 회원가입
+	 * 2. 처리내용 : MemberVO
+	 * </pre>
+	 * Method Name : do_save
+	 * @since : 2019. 12. 5.
+	 * @author : sist
+	 * @history : 
+	 *	-----------------------------------------------------------------------
+	 *	변경일				작성자						변경내용  
+	 *	----------- ------------------- ---------------------------------------
+	 *	2019. 12. 5.		sist				최초 작성 
+	 *	-----------------------------------------------------------------------
+	 * 
+	 * @see com.sist.hr.cmn.WorkDiv#do_save(com.sist.hr.cmn.DTO)
+	 * @param dto
+	 * @return 1(등록)/0(실패)
+	 */
+	@Override
+	public int do_save(DTO dto) {
+		MemberVO memberVO=(MemberVO) dto;
+		
+		PreparedStatement pstmt = null;
+		int result  = 0;
+		//----------------------------------------
+		//01.DB 연결
+		//----------------------------------------		
+		Connection c = null;
+		try {
+			c = connectionMaker.makeConnection();
+			
+			LOG.debug("=============================");
+			LOG.debug("01. Connection="+c);
+			LOG.debug("=============================");	
+			//----------------------------------------
+			//02.SQL작성
+			//----------------------------------------		
+			StringBuilder sb=new StringBuilder();
+			sb.append(" INSERT INTO member (   \n");
+			sb.append("     mem_id,            \n");
+			sb.append("     grp_div,           \n");
+			sb.append("     pw,                \n");
+			sb.append("     name,              \n");
+			sb.append("     auth,              \n");
+			sb.append("     email,             \n");
+			sb.append("     cellphone,         \n");
+			sb.append("     address,           \n");
+			sb.append("     addr_dtail,        \n");
+			sb.append("     point,             \n");
+			sb.append("     reg_dt,            \n");
+			sb.append("     reg_id,            \n");
+			sb.append("     mod_dt,            \n");
+			sb.append("     mod_id             \n");
+			sb.append(" ) VALUES (             \n");
+			sb.append("     ?,                 \n");
+			sb.append("     ?,                 \n");
+			sb.append("     ?,                 \n");
+			sb.append("     ?,                 \n");
+			sb.append("     ?,                 \n");
+			sb.append("     ?,                 \n");
+			sb.append("     ?,                 \n");
+			sb.append("     ?,                 \n");
+			sb.append("     ?,                 \n");
+			sb.append("     ?,                 \n");
+			sb.append("     SYSDATE,           \n");
+			sb.append("     ?,                 \n");
+			sb.append("     SYSDATE,           \n");
+			sb.append("     ?                  \n");
+			sb.append(" )                      \n");
+			
+			
+			LOG.debug("memberVO : " + memberVO.toString());
+			LOG.debug("=============================");
+			LOG.debug("02. sql=\n"+sb.toString());
+			LOG.debug("=============================");	
+			//----------------------------------------
+			//03.PreparedStatement
+			//----------------------------------------			
+			pstmt = c.prepareStatement(sb.toString());
+			pstmt.setString(1,memberVO.getMemId());
+			pstmt.setString(2,memberVO.getGrpDiv());
+			pstmt.setString(3,memberVO.getPw());
+			pstmt.setString(4,memberVO.getName());
+			pstmt.setString(5,memberVO.getAuth());
+			pstmt.setString(6,memberVO.getEmail());
+			pstmt.setString(7,memberVO.getCellphone());
+			pstmt.setString(8,memberVO.getAddress());
+			pstmt.setString(9,memberVO.getAddrDtail());
+			pstmt.setString(10,memberVO.getPoint());
+			pstmt.setString(11,memberVO.getRegId());
+			pstmt.setString(12,memberVO.getModId());
+			result  = pstmt.executeUpdate();		
+			LOG.debug("result:"+result);
+			
+		} catch (ClassNotFoundException e) {
+			LOG.debug("ClassNotFoundException=======================");
+			e.printStackTrace();
+			LOG.debug(e.getMessage());
+			LOG.debug("ClassNotFoundException=======================");
+		} catch (SQLException e) {
+			LOG.debug("SQLException=======================");
+			e.printStackTrace();
+			LOG.debug(e.getMessage());
+			LOG.debug("SQLException=======================");
+		} finally {
+
+				JDBCUtil.close(pstmt);
+				JDBCUtil.close(c);	
+		}
+
+		return result;
+	}
+
+	/**
+	 * <pre>
+	 * 1. 개요 : 회원정보 수정
+	 * 2. 처리내용 : MemberVO
+	 * </pre>
+	 * Method Name : do_update
+	 * @since : 2019. 12. 5.
+	 * @author : sist
+	 * @history : 
+	 *	-----------------------------------------------------------------------
+	 *	변경일				작성자						변경내용  
+	 *	----------- ------------------- ---------------------------------------
+	 *	2019. 12. 5.		sist				최초 작성 
+	 *	-----------------------------------------------------------------------
+	 * 
+	 * @see com.sist.hr.cmn.WorkDiv#do_update(com.sist.hr.cmn.DTO)
+	 * @param dto
+	 * @return 1(수정)/0(실패)
+	 */
+	@Override
+	public int do_update(DTO dto) {
+		MemberVO memberVO=(MemberVO) dto;
+		
+		PreparedStatement pstmt = null;
+		int result  = 0;
+		//----------------------------------------
+		//01.DB 연결
+		//----------------------------------------		
+		Connection c = null;
+		try {
+			c = connectionMaker.makeConnection();
+			
+			LOG.debug("=============================");
+			LOG.debug("01. Connection="+c);
+			LOG.debug("=============================");	
+			//----------------------------------------
+			//02.SQL작성
+			//----------------------------------------		
+			StringBuilder sb=new StringBuilder();
+			sb.append(" UPDATE member       \n");
+			sb.append(" SET pw         = ?, \n"); 
+			sb.append("     name       = ?, \n");
+			sb.append("     auth       = ?, \n");
+			sb.append("     email      = ?, \n");
+			sb.append("     cellphone  = ?, \n");
+			sb.append("     address    = ?, \n");
+			sb.append("     addr_dtail = ?, \n");
+			sb.append("     point      = ?, \n");			
+			sb.append("     mod_id     = ?, \n");
+			sb.append("     mod_dt     = SYSDATE \n");
+			sb.append(" WHERE mem_id = ?    \n");
+			sb.append(" AND grp_div  = ?    \n");
+			
+			
+			LOG.debug("memberVO : " + memberVO.toString());
+			LOG.debug("=============================");
+			LOG.debug("02. sql=\n"+sb.toString());
+			LOG.debug("=============================");	
+			//----------------------------------------
+			//03.PreparedStatement
+			//----------------------------------------			
+			pstmt = c.prepareStatement(sb.toString());
+			
+			pstmt.setString(1,memberVO.getPw());
+			pstmt.setString(2,memberVO.getName());
+			pstmt.setString(3,memberVO.getAuth());
+			pstmt.setString(4,memberVO.getEmail());
+			pstmt.setString(5,memberVO.getCellphone());
+			pstmt.setString(6,memberVO.getAddress());
+			pstmt.setString(7,memberVO.getAddrDtail());
+			pstmt.setString(8,memberVO.getPoint());
+			pstmt.setString(9,memberVO.getModId());
+			
+			pstmt.setString(10,memberVO.getMemId());
+			pstmt.setString(11,memberVO.getGrpDiv());
+			
+			result  = pstmt.executeUpdate();		
+			LOG.debug("result:"+result);
+			
+		} catch (ClassNotFoundException e) {
+			LOG.debug("ClassNotFoundException=======================");
+			e.printStackTrace();
+			LOG.debug(e.getMessage());
+			LOG.debug("ClassNotFoundException=======================");
+		} catch (SQLException e) {
+			LOG.debug("SQLException=======================");
+			e.printStackTrace();
+			LOG.debug(e.getMessage());
+			LOG.debug("SQLException=======================");
+		} finally {
+
+				JDBCUtil.close(pstmt);
+				JDBCUtil.close(c);	
+
+		}
+
+		return result;
+	}
+
+	/**
+	 * <pre>
+	 * 1. 개요 : 회원정보 삭제
+	 * 2. 처리내용 : MemberVO
+	 * </pre>
+	 * Method Name : do_delete
+	 * @since : 2019. 12. 5.
+	 * @author : sist
+	 * @history : 
+	 *	-----------------------------------------------------------------------
+	 *	변경일				작성자						변경내용  
+	 *	----------- ------------------- ---------------------------------------
+	 *	2019. 12. 5.		sist				최초 작성 
+	 *	-----------------------------------------------------------------------
+	 * 
+	 * @see com.sist.hr.cmn.WorkDiv#do_delete(com.sist.hr.cmn.DTO)
+	 * @param dto
+	 * @return 1(삭제)/0(실패)
+	 */
+	@Override
+	public int do_delete(DTO dto) {
+		MemberVO memberVO=(MemberVO) dto;
+		
+		PreparedStatement pstmt = null;
+		int result  = 0;
+		//----------------------------------------
+		//01.DB 연결
+		//----------------------------------------		
+		Connection c = null;
+		try {
+			c = connectionMaker.makeConnection();
+			
+			LOG.debug("=============================");
+			LOG.debug("01. Connection="+c);
+			LOG.debug("=============================");	
+			//----------------------------------------
+			//02.SQL작성
+			//----------------------------------------		
+			StringBuilder sb=new StringBuilder();
+			sb.append(" DELETE FROM member \n");
+			sb.append(" WHERE mem_id = ?   \n");
+			sb.append(" AND grp_div  = ?   \n");
+			
+			
+			LOG.debug("memberVO : " + memberVO.toString());
+			LOG.debug("=============================");
+			LOG.debug("02. sql=\n"+sb.toString());
+			LOG.debug("=============================");	
+			//----------------------------------------
+			//03.PreparedStatement
+			//----------------------------------------			
+			pstmt = c.prepareStatement(sb.toString());
+			pstmt.setString(1,memberVO.getMemId());
+			pstmt.setString(2,memberVO.getGrpDiv());
+			result  = pstmt.executeUpdate();		
+			LOG.debug("result:"+result);
+			
+		} catch (ClassNotFoundException e) {
+			LOG.debug("ClassNotFoundException=======================");
+			e.printStackTrace();
+			LOG.debug(e.getMessage());
+			LOG.debug("ClassNotFoundException=======================");
+		} catch (SQLException e) {
+			LOG.debug("SQLException=======================");
+			e.printStackTrace();
+			LOG.debug(e.getMessage());
+			LOG.debug("SQLException=======================");
+		} finally {
+
+				JDBCUtil.close(pstmt);
+				JDBCUtil.close(c);	
+
+		}
+
+		return result;
+	}
+
+	/**
+	 * <pre>
+	 * 1. 개요 : 단건조회(회원ID,그룹)
+	 * 2. 처리내용 : MemberVO
+	 * </pre>
+	 * Method Name : do_selectOne
+	 * @since : 2019. 12. 5.
+	 * @author : sist
+	 * @history : 
+	 *	-----------------------------------------------------------------------
+	 *	변경일				작성자						변경내용  
+	 *	----------- ------------------- ---------------------------------------
+	 *	2019. 12. 5.		sist				최초 작성 
+	 *	-----------------------------------------------------------------------
+	 * 
+	 * @see com.sist.hr.cmn.WorkDiv#do_selectOne(com.sist.hr.cmn.DTO)
+	 * @param dto
+	 * @return MemberVO
+	 */
+	@Override
+	public DTO do_selectOne(DTO dto) {
+		MemberVO memberVO=(MemberVO) dto;//Input
+		MemberVO outVO=null;//Return;
+		int result  = 0;
+		//----------------------------------------
+		//01.DB 연결
+		//----------------------------------------		
+		Connection c = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			c = connectionMaker.makeConnection();
+			LOG.debug("=============================");
+			LOG.debug("01. Connection="+c);
+			LOG.debug("=============================");		
+			//----------------------------------------
+			//02.SQL작성
+			//----------------------------------------		
+			StringBuilder sb=new StringBuilder();
+			sb.append("  SELECT            \n");
+			sb.append("      mem_id,       \n");
+			sb.append("      grp_div,      \n");
+			sb.append("      pw,           \n");
+			sb.append("      name,         \n");
+			sb.append("      auth,         \n");
+			sb.append("      email,        \n");
+			sb.append("      cellphone,    \n");
+			sb.append("      address,      \n");
+			sb.append("      addr_dtail,   \n");
+			sb.append("      point,        \n");
+			sb.append("      reg_dt,       \n");
+			sb.append("      reg_id,       \n");
+			sb.append("      mod_dt,       \n");
+			sb.append("      mod_id        \n");
+			sb.append("  FROM member       \n");
+			sb.append("  WHERE mem_id = ?  \n");
+			sb.append("  AND grp_div  = ?  \n");
+			
+			LOG.debug("=============================");
+			LOG.debug("02. sql=\n"+sb.toString());
+			LOG.debug("=============================");		
+			
+			//----------------------------------------
+			//03.PreparedStatement
+			//----------------------------------------			
+			ps = c.prepareStatement(sb.toString());
+			ps.setString(1,memberVO.getMemId());
+			ps.setString(2,memberVO.getGrpDiv());
+			LOG.debug("=============================");
+			LOG.debug("03. getMemId=\n"+memberVO.getMemId());
+			LOG.debug("03. getGrpDiv=\n"+memberVO.getGrpDiv());
+			LOG.debug("=============================");			
+			
+			//----------------------------------------
+			//04.Run sql
+			//----------------------------------------	
+			rs = ps.executeQuery();
+	
+			if(rs.next()) {
+				outVO=new MemberVO();
+				outVO.setMemId(rs.getString("mem_id"));
+				outVO.setGrpDiv(rs.getString("grp_div"));
+				outVO.setPw(rs.getString("pw"));
+				outVO.setName(rs.getString("name"));
+				outVO.setAuth(rs.getString("auth"));
+				outVO.setEmail(rs.getString("email"));
+				outVO.setCellphone(rs.getString("cellphone"));
+				outVO.setAddress(rs.getString("address"));
+				outVO.setAddrDtail(rs.getString("addr_dtail"));
+				outVO.setPoint(rs.getString("point"));
+				outVO.setRegDt(rs.getString("reg_dt"));
+				outVO.setRegId(rs.getString("reg_id"));
+				outVO.setModDt(rs.getString("mod_dt"));
+				outVO.setModId(rs.getString("mod_id"));
+				
+			}
+			LOG.debug("=============================");
+			LOG.debug("04. Run outVO=\n"+outVO);
+			LOG.debug("=============================");		
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}finally {
+			//----------------------------------------
+			//05.자원반납
+			//----------------------------------------			
+
+
+				JDBCUtil.close(rs);
+				JDBCUtil.close(ps);
+				JDBCUtil.close(c);				
+			
+		}
+
+		return outVO;
+	}
+
+	/**
+	 * <pre>
+	 * 1. 개요 : 회원목록 조회,SearchVO(검색구분, 검색어)
+	 *         1,ID검색
+	 *         2,이름검색
+	 *         3,이메일검색
+	 *         4,CELLPHONE
+	 *         5,주소
+	 * 2. 처리내용 : 10건의 회원정보 return
+	 * </pre>
+	 * Method Name : do_retrieve
+	 * @since : 2019. 12. 5.
+	 * @author : sist
+	 * @history : 
+	 *	-----------------------------------------------------------------------
+	 *	변경일				작성자						변경내용  
+	 *	----------- ------------------- ---------------------------------------
+	 *	2019. 12. 5.		sist				최초 작성 
+	 *	-----------------------------------------------------------------------
+	 * 
+	 * @see com.sist.hr.cmn.WorkDiv#do_retrieve(com.sist.hr.cmn.DTO)
+	 * @param dto
+	 * @return List<?>
+	 */
+	@Override
+	public List<?> do_retrieve(DTO dto) {
+		List<MemberVO> list =new ArrayList<MemberVO>();
+		SearchVO searchVO= (SearchVO)dto;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		StringBuilder sb=new StringBuilder();
+		
+		StringBuilder searchSb=new StringBuilder();
+		
+		//검색처리 
+		boolean searchCon = ( (null==searchVO.getSearchDiv()) || searchVO.getSearchDiv().equals("") )?true:false;
+		
+
+		if(searchCon != true){
+			
+			//ID검색
+			if(searchVO.getSearchDiv().equals("1")){
+				searchSb.append(" AND MEM_ID LIKE '%"+searchVO.getSearchWord()+ "%' \n");
+			//이름검색	
+			}else if(searchVO.getSearchDiv().equals("2")){
+				searchSb.append(" AND NAME LIKE '%"+searchVO.getSearchWord()+ "%' \n");
+			//이메일 검색	
+			}else if(searchVO.getSearchDiv().equals("3")){
+				searchSb.append(" AND EMAIL LIKE '%"+searchVO.getSearchWord()+ "%' \n");
+			//CELLPHONE 검색	
+			}else if(searchVO.getSearchDiv().equals("4")){
+				searchSb.append(" AND CELLPHONE LIKE '%"+searchVO.getSearchWord()+ "%' \n");
+			//ADDRESS 검색	
+			}else if(searchVO.getSearchDiv().equals("5")){
+				searchSb.append(" AND ADDRESS||ADDR_DTAIL LIKE '%"+searchVO.getSearchWord()+ "%' \n");
+			}
+		}
+		
+		Connection conn = null;
+		try {
+			conn = connectionMaker.makeConnection();
+			sb.append(" SELECT B.MEM_ID                                              \n");
+			sb.append(" ,B.GRP_DIV                                                   \n");
+			sb.append(" ,B.PW                                                        \n");
+			sb.append(" ,B.NAME                                                      \n");
+			sb.append(" ,B.AUTH                                                      \n");
+			sb.append(" ,B.EMAIL                                                     \n");
+			sb.append(" ,B.CELLPHONE                                                 \n");
+			sb.append(" ,B.ADDRESS                                                   \n");
+			sb.append(" ,B.ADDR_DTAIL                                                \n");
+			sb.append(" ,B.POINT                                                     \n");
+			sb.append(" ,TO_CHAR(B.REG_DT,'yyyy/mm/dd') REG_DT                       \n");
+			sb.append(" ,B.REG_ID                                                    \n");
+			sb.append(" ,TO_CHAR(B.MOD_DT,'yyyy/mm/dd') MOD_DT                       \n");
+			sb.append(" ,B.MOD_ID                                                    \n");
+			sb.append(" ,B.RNUM AS NO                                                  \n");
+			sb.append(" FROM(                                                        \n");
+			sb.append("     SELECT ROWNUM AS rnum,A.*                                \n");
+			sb.append("     FROM(                                                    \n");
+			sb.append("         SELECT *                                             \n");
+			sb.append("         FROM member                                          \n");
+			sb.append("         WHERE GRP_DIV  like  ?                                  \n");
+			//검색조건
+			sb.append(searchSb.toString());
+			sb.append("         ORDER BY MOD_DT DESC                                 \n");
+			sb.append("     )A                                                       \n");
+			sb.append("     WHERE ROWNUM <= ?                     \n");
+			sb.append(" )B                                                           \n");
+			sb.append(" WHERE B.rnum >= ?                                   \n");
+			pstmt = conn.prepareStatement(sb.toString());
+			
+			pstmt.setString(1, ( (null==searchVO.getSearchDiv()) || searchVO.getSearchDiv().equals("") )?"%":searchVO.getGrpDiv()+"%");
+			//<=(&PAGE_SIZE*(&PAGE_NUM-1)+&PAGE_SIZE)         
+			int first = searchVO.getPageSize()*(searchVO.getPageIndex()-1)+searchVO.getPageSize();
+			//(&PAGE_SIZE*(&PAGE_NUM-1)+1)
+			int second = searchVO.getPageSize()*(searchVO.getPageIndex()-1)+1;
+			
+			pstmt.setInt(2, first);
+			pstmt.setInt(3, second);
+			
+			
+			System.out.println("=====================");
+			System.out.println("do_retrieve : \n" + sb.toString());
+			System.out.println("first : " + first);
+			System.out.println("second : " + second);
+			System.out.println("getGrpDiv : " + searchVO.getGrpDiv());
+			System.out.println("getPageSize : " + searchVO.getPageSize());
+			System.out.println("getPageIndex : " + searchVO.getPageIndex());
+			System.out.println("memberVO : \n" + searchVO);
+			System.out.println("=====================");
+			
+			rs = pstmt.executeQuery();
+
+			while(rs.next())
+			{   
+				MemberVO outMember=new MemberVO();
+				
+				outMember.setMemId(rs.getString("MEM_ID"));
+				outMember.setGrpDiv(rs.getString("GRP_DIV"));
+				outMember.setPw(rs.getString("PW"));
+				outMember.setName(rs.getString("NAME"));
+				outMember.setAuth(rs.getString("AUTH"));
+				outMember.setEmail(rs.getString("EMAIL"));
+				outMember.setCellphone(rs.getString("CELLPHONE"));
+				outMember.setAddress(rs.getString("ADDRESS"));
+				outMember.setAddrDtail(rs.getString("ADDR_DTAIL"));
+				outMember.setPoint(rs.getString("POINT"));
+				outMember.setRegDt(rs.getString("REG_DT"));
+				outMember.setRegId(rs.getString("REG_ID"));
+				outMember.setModDt(rs.getString("MOD_DT"));
+				outMember.setModId(rs.getString("MOD_ID"));				
+				outMember.setNo(rs.getString("NO"));			
+				
+				
+				//outMember.setTotalCnt(rs.getString("TOTAL_CNT"));
+				
+				//--Message
+				outMember.setMessageDiv("11");
+				outMember.setMessage("환영 합니다.");
+
+				list.add(outMember);
+				System.out.println("==member==================="+outMember.toString());
+			}
+		}catch(Exception ex){
+			System.out.println("=====================");
+			System.out.println("SelectDBCountDao : " + ex);
+			System.out.println("=====================");
+		}finally{
+
+				JDBCUtil.close(rs);
+				JDBCUtil.close(pstmt);
+				JDBCUtil.close(conn);
+
+		}
+		
+		return list;	
+	}
+
+}

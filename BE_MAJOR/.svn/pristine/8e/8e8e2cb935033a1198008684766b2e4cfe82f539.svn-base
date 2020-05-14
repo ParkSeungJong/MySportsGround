@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.5010615711252654" layoutX="74.0" layoutY="140.0" prefHeight="310.0" prefWidth="500.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="230.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <GridPane layoutX="156.0" layoutY="204.0" prefHeight="181.0" prefWidth="205.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="홍대입구역" wrappingWidth="202.12109375" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="21.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="쌍용축구장" wrappingWidth="204.12109375" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2019.11.27" wrappingWidth="205.12109375" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="21.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10" wrappingWidth="201.12109375" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="21.0" />
+                           </font></Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="80,000원" wrappingWidth="203.12109375" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="21.0" />
+                           </font></Text>
+                        <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="206.0" text="- 일자 :" textAlignment="RIGHT">
+                           <font>
+                              <Font size="21.0" />
+                           </font></Label>
+                        <Label alignment="TOP_RIGHT" prefHeight="25.0" prefWidth="206.0" text="- 구장명 :" textAlignment="RIGHT" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="21.0" />
+                           </font></Label>
+                        <Label alignment="TOP_RIGHT" prefHeight="25.0" prefWidth="206.0" text="- 주소 :" textAlignment="RIGHT" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="21.0" />
+                           </font></Label>
+                        <Label alignment="TOP_RIGHT" prefHeight="15.0" prefWidth="206.0" text="- 인원 :" textAlignment="RIGHT" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="21.0" />
+                           </font></Label>
+                        <Label alignment="TOP_RIGHT" prefHeight="15.0" prefWidth="205.0" text="- 결제 금액 :" textAlignment="RIGHT" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="21.0" />
+                           </font></Label>
+                        <Label alignment="TOP_RIGHT" prefHeight="15.0" prefWidth="204.0" text="- 구장 번호 :" textAlignment="RIGHT" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="21.0" />
+                           </font></Label>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="02-1234-5678" wrappingWidth="203.12109375" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="21.0" />
+                           </font></Text>
+                        <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="206.0" text="- 시간 :" textAlignment="RIGHT" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="21.0" />
+                           </font></Label>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="20:00~22:00" wrappingWidth="203.12109375" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="21.0" />
+                           </font></Text>
+                     </children>
+                  </GridPane>
+                  <Pane layoutX="30.0" layoutY="35.0" prefHeight="66.0" prefWidth="457.0" style="-fx-background-color: orange;" AnchorPane.bottomAnchor="487.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="162.0" layoutY="18.0" text="▶ 예약정보">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children></AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Pane layoutX="20.0" layoutY="14.0" prefHeight="50.0" prefWidth="205.0" style="-fx-background-color: orange;" AnchorPane.bottomAnchor="487.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="35.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="128.0" layoutY="18.0" text="▶ 구장 환불 규정">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Text layoutX="111.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- 이용 5일 전까지 : 100% 환불">
+                     <font>
+                        <Font size="21.0" />
+                     </font></Text>
+                  <Text layoutX="111.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- 4일 전 ~ 3일 전: 50% 환불">
+                     <font>
+                        <Font size="21.0" />
+                     </font></Text>
+                  <Text layoutX="111.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- 2일 전 ~ 대관 당일 : 환불 불가">
+                     <font>
+                        <Font size="21.0" />
+                     </font></Text>
+                  <Text layoutX="111.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="** 해당 환불 규정은 구장 이용 날짜(대관 날짜)를 기준으로 합니다." wrappingWidth="354.81542563438416">
+                     <font>
+                        <Font size="21.0" />
+                     </font></Text>
+                  <Text layoutX="111.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0" text="** 날짜변경은 상단 환불 규정 기준 100% 환불인 경우에만 가능합니다. 그 외에는 변경이 불가능합니다. (1회 한정)" wrappingWidth="345.99999672174454">
+                     <font>
+                        <Font size="21.0" />
+                     </font></Text>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+      <AnchorPane layoutX="50.0" layoutY="39.0" prefHeight="61.0" prefWidth="500.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="700.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="20.0" layoutY="42.0" prefHeight="15.0" prefWidth="422.0" text="예약이 완료되었습니다." textFill="#575879" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="42.0">
+               <font>
+                  <Font name="Arial" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

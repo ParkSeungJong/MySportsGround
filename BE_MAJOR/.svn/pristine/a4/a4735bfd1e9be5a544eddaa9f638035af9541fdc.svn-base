@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sist.mypage.controller.MyPage03_BookingHistoryController">
+   <children>
+      <Pane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="1240.0">
+         <children>
+            <SplitPane dividerPositions="0.0779510022271715" layoutX="-10.0" layoutY="270.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="1250.0">
+               <items>
+                  <AnchorPane maxHeight="-Infinity" minHeight="70.0" minWidth="0.0" prefHeight="70.0" prefWidth="1199.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="8.0" prefHeight="26.0" prefWidth="176.0" style="-fx-font-size: 28;" text="마이 페이지" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="708.0" AnchorPane.topAnchor="8.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="513.0" minWidth="0.0" prefHeight="513.0" prefWidth="1252.0">
+                     <children>
+                        <Button fx:id="bookinglistbtn" layoutX="21.0" layoutY="102.0" mnemonicParsing="false" onAction="#bookinglistAction" prefHeight="50.0" prefWidth="112.0" text="나의 예약 내역" />
+                        <Button fx:id="userinfobtn" layoutX="21.0" layoutY="168.0" mnemonicParsing="false" onAction="#userinfoAction" prefHeight="50.0" prefWidth="112.0" text="회원정보" />
+                        <Button fx:id="bookinghistorybtn" layoutX="21.0" layoutY="237.0" mnemonicParsing="false" onAction="#bookinghistoryAction" prefHeight="50.0" prefWidth="112.0" text="이용 내역" />
+                        <Label layoutX="190.0" layoutY="14.0" prefHeight="47.0" prefWidth="219.0" style="-fx-font-size: 22;" text="나의 이용 내역" />
+                        <GridPane layoutX="190.0" layoutY="65.0" prefHeight="397.0" prefWidth="802.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="279.0" minWidth="10.0" prefWidth="173.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="559.0" minWidth="10.0" prefWidth="559.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" GridPane.rowIndex="2">
+                                 <children>
+                                    <ImageView fx:id="imageView3" fitHeight="100.0" fitWidth="200.0" layoutX="14.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                              <GridPane prefHeight="144.0" prefWidth="444.0" GridPane.columnIndex="1">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <children>
+                                    <GridPane prefHeight="144.0" prefWidth="444.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="facilityName" prefHeight="36.0" prefWidth="481.0" GridPane.rowIndex="1" />
+                                          <TextField fx:id="selectDate" prefHeight="35.0" prefWidth="505.0" GridPane.rowIndex="3" />
+                                          <Label text=" 경기장명">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text=" 예약일자" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                                 <rowConstraints>
+                                    <RowConstraints />
+                                 </rowConstraints>
+                              </GridPane>
+                              <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" GridPane.rowIndex="1">
+                                 <children>
+                                    <ImageView fx:id="imageView2" fitHeight="100.0" fitWidth="200.0" layoutX="14.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                              <GridPane>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <ImageView fx:id="imageView" fitHeight="100.0" fitWidth="200.0" layoutX="14.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </GridPane>
+                              <GridPane prefHeight="144.0" prefWidth="444.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <TextField fx:id="facilityName2" prefHeight="36.0" prefWidth="481.0" GridPane.rowIndex="1" />
+                                    <TextField fx:id="selectDate2" prefHeight="35.0" prefWidth="505.0" GridPane.rowIndex="3" />
+                                    <Label text=" 경기장명">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text=" 예약일자" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </GridPane>
+                              <GridPane prefHeight="144.0" prefWidth="444.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <TextField fx:id="facilityName3" prefHeight="36.0" prefWidth="481.0" GridPane.rowIndex="1" />
+                                    <TextField fx:id="selectDate3" prefHeight="35.0" prefWidth="505.0" GridPane.rowIndex="3" />
+                                    <Label text=" 예약일자" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text=" 경기장명">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </GridPane>
+                        <GridPane layoutX="508.0" layoutY="475.0" prefHeight="47.0" prefWidth="232.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Button mnemonicParsing="false" text="1" />
+                              <Button mnemonicParsing="false" text="2" GridPane.columnIndex="1" />
+                              <Button mnemonicParsing="false" text="3" GridPane.columnIndex="2" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+            <ImageView fx:id="Logo" fitHeight="200.0" fitWidth="800.0" layoutX="220.0" layoutY="50.0" onMouseClicked="#MoveToMainPg" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../BE_MAJOR/src/img/msglogo.PNG" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

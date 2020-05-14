@@ -1,0 +1,73 @@
+package com.sist.mypage.controller;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import org.apache.log4j.Logger;
+
+import com.sist.hr.cmn.ConnectionMaker;
+
+/**
+ * <pre>
+ * com.sist.hr.cmn 
+ *    |_ HROraConnectionMaker.java
+ * 
+ * </pre>
+ * @since : 2019. 12. 5. 오후 4:57:12
+ * @version : 
+ * @author : sist
+ */
+public class HROraConnectionMaker implements ConnectionMaker {
+    final Logger LOG =Logger.getLogger(HROraConnectionMaker.class);
+	/**
+	 * <pre>
+	 * 1. 개요 : 
+	 * 2. 처리내용 : 
+	 * </pre>
+	 * Method Name : makeConnection
+	 * @since : 2019. 12. 5.
+	 * @author : sist
+	 * @history : 
+	 *	-----------------------------------------------------------------------
+	 *	변경일				작성자						변경내용  
+	 *	----------- ------------------- ---------------------------------------
+	 *	2019. 12. 5.		sist				최초 작성 
+	 *	-----------------------------------------------------------------------
+	 * 
+	 * @see com.sist.hr.cmn.ConnectionMaker#makeConnection()
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	@Override
+	public Connection makeConnection() throws ClassNotFoundException, SQLException {
+		Connection c = null; 
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			LOG.debug("ClassNotFoundException=======================");
+			e.printStackTrace();
+			LOG.debug(e.getMessage());
+			LOG.debug("ClassNotFoundException=======================");
+		}
+		String url    = "jdbc:oracle:thin:@211.238.142.124:1521:orcl";
+		String userId = "FIRST";
+		String passwd = "first1224";
+		//----------------------------------------
+		//01.DB 연결
+		//----------------------------------------		
+		
+		try {
+			c = DriverManager.getConnection(url,userId,passwd);
+		} catch (SQLException e) {
+			LOG.debug("SQLException=======================");
+			e.printStackTrace();
+			LOG.debug(e.getMessage());
+			LOG.debug("SQLException=======================");
+		}	
+		LOG.debug("Connection="+c);
+		return c;
+	}
+
+}

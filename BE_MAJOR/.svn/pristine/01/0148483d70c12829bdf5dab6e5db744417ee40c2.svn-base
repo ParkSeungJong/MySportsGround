@@ -1,0 +1,83 @@
+package com.sist.booking.controller;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import com.sist.booking.dao.BookingDAO;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+
+public class BookingController01 implements Initializable {
+	BookingDAO dao = new BookingDAO();
+	Alert alert = new Alert(AlertType.WARNING);
+	@FXML
+	Button findBtn, bookBtn1, bookBtn2;
+	@FXML
+	TextField tfArea, tfDate, tfName1, tfName2;
+	@FXML
+	Text txtDate1, txtDate2, txtAdd1, txtAdd2;
+	@FXML
+	Rectangle Rec1, Rec2;
+	@FXML
+	ImageView imgView1, imgView2;
+	
+	@FXML
+	
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		findBtn.setOnAction(event -> findAction(event));
+		bookBtn1.setOnAction(event1 -> bookAction(event1));
+		bookBtn2.setOnAction(event1 -> bookAction(event1));
+		alert.setTitle("MSG");
+		alert.setHeaderText("Look, a Dialog");
+	}
+	
+	public void bookAction(ActionEvent event1) {
+		if(dao.do_retrieveBookBtn(tfArea.getText(), tfDate.getText())) {
+			alert.setContentText("예약이 불가합니다.");
+			alert.showAndWait();
+		}
+		System.out.println(dao.do_retrieveBookBtn(tfArea.getText(), tfDate.getText()));//true
+		
+	}
+
+
+
+
+
+	private void findAction(ActionEvent event) {
+		
+		String path1 = dao.do_retrieveImagePath1(tfArea.getText(), tfDate.getText());
+		String path2 = dao.do_retrieveImagePath2(tfArea.getText(), tfDate.getText());
+
+//		System.out.println(dao.do_retrieveBookBtn(tfArea.getText(), tfDate.getText()));
+//		System.out.println(dao.do_retrieveImagePath1("서울특별시","20191230"));
+//		System.out.println(dao.do_retrieveImagePath2("서울특별시","20191230"));
+
+		tfName1.setText(dao.do_retrieveName1(tfArea.getText(), tfDate.getText()));
+		tfName2.setText(dao.do_retrieveName2(tfArea.getText(), tfDate.getText()));
+		txtDate1.setText(dao.do_retrieveDate1(tfArea.getText(), tfDate.getText()));
+		txtDate2.setText(dao.do_retrieveDate2(tfArea.getText(), tfDate.getText()));
+		txtAdd1.setText(dao.do_retrieveAddress1(tfArea.getText(), tfDate.getText()));
+		txtAdd2.setText(dao.do_retrieveAddress2(tfArea.getText(), tfDate.getText()));
+		Rec1.setFill(dao.do_retrieveColor1(tfArea.getText(), tfDate.getText()));
+		Rec2.setFill(dao.do_retrieveColor2(tfArea.getText(), tfDate.getText()));
+		imgView1.setImage(new Image(path1));
+		imgView2.setImage(new Image(path2));
+		
+	}
+
+}
+
+

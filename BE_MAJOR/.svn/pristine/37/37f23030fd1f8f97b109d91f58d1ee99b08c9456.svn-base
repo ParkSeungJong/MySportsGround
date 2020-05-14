@@ -1,0 +1,53 @@
+package com.sist.facility.controller;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import com.sist.facility.dao.FacilityDAO;
+import com.sist.facility.dao.FacilityVO;
+
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.text.Text;
+
+public class Facility02_InfoController003 implements Initializable {
+	@FXML
+	Label historyLabel,wayLabel;
+	@FXML 
+	Text year01,year02,year03,year04,year05,year06,
+		 history01,history02,history03,history04,history05,history06,
+		 subway,bus01,bus02,bus03,bus04,car01,car02,inquary01,inquary02;
+	
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		//연혁
+		FacilityDAO yeardao = new FacilityDAO();
+		ArrayList<FacilityVO> list= (ArrayList<FacilityVO>) yeardao.do_read("facilityHistory.csv");
+			
+		Text[]yearList = {year01,year02,year03,year04,year05,year06}; 
+		Text[] historyList={history01,history02,history03,history04,history05,history06};
+		for(int i=0;i<list.size();i++) {
+			yearList[i].setText(list.get(i).getFirst_col());
+			historyList[i].setText(list.get(i).getSecond_col());
+		}
+		
+		//오시는 길
+		FacilityDAO way = new FacilityDAO();
+		ArrayList<FacilityVO> wayList= (ArrayList<FacilityVO>) way.do_read("facilityWay.csv");
+		Text[] Way = {subway,bus01,bus02,bus03,bus04,car01,car02};
+		for(int i=0;i<wayList.size();i++) {
+			Way[i].setText(wayList.get(i).getSecond_col());
+			}
+		
+		//안내 및 문의
+		FacilityDAO inquary = new FacilityDAO();
+		ArrayList<FacilityVO> inqList= (ArrayList<FacilityVO>) way.do_read("facilityInquiry.csv");
+		Text[] inq = {inquary01,inquary02};
+		for(int i=0;i<inqList.size();i++) {
+			inq[i].setText(inqList.get(i).getSecond_col());
+			}
+	}
+}

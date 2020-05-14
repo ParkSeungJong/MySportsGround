@@ -1,0 +1,36 @@
+2020-05-14 15:28:09,542 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:81)     - SQLException=======================
+2020-05-14 15:28:09,546 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:83)     - Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+ 
+2020-05-14 15:28:09,546 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:84)     - SQLException=======================
+2020-05-14 15:28:09,546 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:86)     - Connection=null
+2020-05-14 15:28:17,396 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:81)     - SQLException=======================
+2020-05-14 15:28:17,398 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:83)     - Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+ 
+2020-05-14 15:28:17,398 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:84)     - SQLException=======================
+2020-05-14 15:28:17,398 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:86)     - Connection=null
+2020-05-14 15:28:33,108 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:81)     - SQLException=======================
+2020-05-14 15:28:33,110 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:83)     - Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+ 
+2020-05-14 15:28:33,110 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:84)     - SQLException=======================
+2020-05-14 15:28:33,110 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:86)     - Connection=null
+2020-05-14 15:28:48,700 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:81)     - SQLException=======================
+2020-05-14 15:28:48,701 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:83)     - Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+ 
+2020-05-14 15:28:48,701 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:84)     - SQLException=======================
+2020-05-14 15:28:48,701 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:86)     - Connection=null
+2020-05-14 15:32:51,949 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:81)     - SQLException=======================
+2020-05-14 15:32:51,952 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:83)     - Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+ 
+2020-05-14 15:32:51,952 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:84)     - SQLException=======================
+2020-05-14 15:32:51,952 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:86)     - Connection=null
+2020-05-14 16:39:32,371 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:81)     - SQLException=======================
+2020-05-14 16:39:32,375 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:83)     - Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
+ 
+2020-05-14 16:39:32,375 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:84)     - SQLException=======================
+2020-05-14 16:39:32,375 DEBUG [JavaFX Application Thread] cmn.HROraConnectionMaker (HROraConnectionMaker.java:86)     - Connection=null

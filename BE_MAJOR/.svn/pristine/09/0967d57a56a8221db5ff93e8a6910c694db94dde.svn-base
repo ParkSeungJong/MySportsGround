@@ -1,0 +1,129 @@
+package com.sist.facility.dao;
+
+import com.sist.dto.workdiv.DTO;
+
+public class FacilityVO extends DTO {
+	/**경기장 코드*/
+	private String facilityCode;
+	/**경기장 지역*/
+	private String facilityArea;
+	/**경기장 이름 */
+	private String facilityName;
+	/**경기장 주소 */
+	private String facilityAddress;
+	/**경기장 사이트*/
+	private String facilitySite;
+	/**경기장  번호*/
+	private String facilityPhone;
+	/**경기장 규격*/
+	private String facilitySize;
+	
+	public FacilityVO() {}
+	
+	public FacilityVO(String facilityCode, String facilityArea, String facilityName, String facilityAddress,
+			String facilitySite, String facilityPhone, String facilitySize) {
+		super();
+		this.facilityCode = facilityCode;
+		this.facilityArea = facilityArea;
+		this.facilityName = facilityName;
+		this.facilityAddress = facilityAddress;
+		this.facilitySite = facilitySite;
+		this.facilityPhone = facilityPhone;
+		this.facilitySize = facilitySize;
+	}
+	/**
+	 * @return the facilityCode
+	 */
+	public String getFacilityCode() {
+		return facilityCode;
+	}
+	/**
+	 * @param facilityCode the facilityCode to set
+	 */
+	public void setFacilityCode(String facilityCode) {
+		this.facilityCode = facilityCode;
+	}
+	/**
+	 * @return the facilityArea
+	 */
+	public String getFacilityArea() {
+		return facilityArea;
+	}
+	/**
+	 * @param facilityArea the facilityArea to set
+	 */
+	public void setFacilityArea(String facilityArea) {
+		this.facilityArea = facilityArea;
+	}
+	/**
+	 * @return the facilityName
+	 */
+	public String getFacilityName() {
+		return facilityName;
+	}
+	/**
+	 * @param facilityName the facilityName to set
+	 */
+	public void setFacilityName(String facilityName) {
+		this.facilityName = facilityName;
+	}
+	/**
+	 * @return the facilityAddress
+	 */
+	public String getFacilityAddress() {
+		return facilityAddress;
+	}
+	/**
+	 * @param facilityAddress the facilityAddress to set
+	 */
+	public void setFacilityAddress(String facilityAddress) {
+		this.facilityAddress = facilityAddress;
+	}
+	/**
+	 * @return the facilitySite
+	 */
+	public String getFacilitySite() {
+		return facilitySite;
+	}
+	/**
+	 * @param facilitySite the facilitySite to set
+	 */
+	public void setFacilitySite(String facilitySite) {
+		this.facilitySite = facilitySite;
+	}
+	/**
+	 * @return the facilityPhone
+	 */
+	public String getFacilityPhone() {
+		return facilityPhone;
+	}
+	/**
+	 * @param facilityPhone the facilityPhone to set
+	 */
+	public void setFacilityPhone(String facilityPhone) {
+		this.facilityPhone = facilityPhone;
+	}
+	/**
+	 * @return the facilitySize
+	 */
+	public String getFacilitySize() {
+		return facilitySize;
+	}
+	/**
+	 * @param facilitySize the facilitySize to set
+	 */
+	public void setFacilitySize(String facilitySize) {
+		this.facilitySize = facilitySize;
+	}
+
+	@Override
+	public String toString() {
+		return "FacilityVO [facilityCode=" + facilityCode + ", facilityArea=" + facilityArea + ", facilityName="
+				+ facilityName + ", facilityAddress=" + facilityAddress + ", facilitySite=" + facilitySite
+				+ ", facilityPhone=" + facilityPhone + ", facilitySize=" + facilitySize + ", toString()="
+				+ super.toString() + "]";
+	}
+
+
+
+}

@@ -1,0 +1,89 @@
+package com.sist.mypage.controller;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import com.sist.hr.cmn.HROraConnectionMaker;
+import com.sist.hr.member.dao.MemberDao;
+import com.sist.hr.member.domain.MemberVO;
+import com.sist.hr.member.*;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+public class LoginController implements Initializable {
+	@FXML Button loginBtn;
+	@FXML TextField idTxt;			//id입력
+	@FXML PasswordField passTxt;	//비번입력 필드
+	Alert alert = new Alert(AlertType.WARNING);
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		alert.setTitle("WELCOME TO MSG");	//제목
+		alert.setHeaderText("Look, BE_MAJOR Dialog");
+		//이벤트 감지
+		//loginEvent감지
+		
+
+	}
+	
+	public void loginHandelerBtn(ActionEvent event) {
+		MemberDao dao = new MemberDao(new HROraConnectionMaker());
+		String memId = idTxt.getText().trim();
+		//ID 입력 Validation
+		if(memId==null||"".equals(memId)) {
+			alert.setContentText("아이디를 입력하세요.");
+			alert.showAndWait();
+			idTxt.requestFocus();
+			
+			return;
+		}
+	
+		//비번 Validation
+				String pass = this.passTxt.getText().trim();
+				if(pass==null||"".equals(pass)) {
+					alert.setContentText("비번을 입력하세요.");
+					alert.showAndWait();
+					passTxt.requestFocus();
+					
+					return;
+				}
+				
+				MemberVO inVO = new MemberVO();
+				inVO.setGrpDiv("5");  	//조 정보
+				inVO.setMemId(memId);	//ID
+				inVO.setPw(pass);		//비번
+						
+				//Login
+				MemberVO outVO = dao.do_login(inVO);
+				alert.setContentText(outVO.getMessage());
+				alert.showAndWait();
+			
+				try {
+					///com/sist/login/MyPage01_UserInfo.fxml
+					Parent myPageLoad = FXMLLoader.load(getClass().getResource("/com/sist/mypage/view/MyPage01_UserInfo.fxml"));
+					Scene scene = new Scene(myPageLoad);
+					Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
+					primaryStage.setScene(scene);
+					primaryStage.show();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			
+	}
+	
+  }
